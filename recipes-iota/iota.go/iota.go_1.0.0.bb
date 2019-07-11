@@ -71,5 +71,5 @@ inherit go
 GO_IMPORT = "github.com/iotaledger/iota.go"
 
 do_compile_prepend(){
-    rm -rf src/github.com/iotaledger/iota.go/units
+    rm -rf src/github.com/iotaledger/iota.go/api/integration
 }
