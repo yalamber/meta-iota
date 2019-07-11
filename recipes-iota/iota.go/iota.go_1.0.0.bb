@@ -73,11 +73,3 @@ GO_IMPORT = "github.com/iotaledger/iota.go"
 do_compile_prepend(){
     rm -rf src/github.com/iotaledger/iota.go/units
 }
-
-
-#GO_LINKSHARED = ""
-#PTEST_ENABLED = "0"
-
-#LDFLAGS += "-lpthread"
-
-#RDEPENDS_${PN}-dev += " gawk bash"
