@@ -1,0 +1,71 @@
+From 7ca29698a1c6b979175556d0ca61534a2baed400 Mon Sep 17 00:00:00 2001
+From: Bernardo Rodrigues <bernardoaraujor@gmail.com>
+Date: Fri, 19 Jul 2019 22:09:39 +0200
+Subject: [PATCH] add yocto toolchain to bazel
+
+---
+ WORKSPACE          | 10 ++++++++++
+ ciri/BUILD         |  9 +++++++++
+ ciri/workspace.bzl | 12 ++++++++++++
+ 3 files changed, 31 insertions(+)
+ create mode 100644 ciri/workspace.bzl
+
+diff --git a/WORKSPACE b/WORKSPACE
+index 95c3b5a..0bfff5c 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -48,3 +48,13 @@ setup_toolchains()
+ load("//tools:snapshot.bzl", "fetch_snapshot_files")
+ 
+ fetch_snapshot_files()
++
++load("//ciri:workspace.bzl", "yocto_workspace")
++
++new_local_repository(
++    name = "yocto_compiler",
++    path = "%%WORKDIR%%",
++    build_file = "//:BUILD.yocto_compiler",
++)
++
++yocto_workspace()
+diff --git a/ciri/BUILD b/ciri/BUILD
+index 7686206..78bf908 100644
+--- a/ciri/BUILD
++++ b/ciri/BUILD
+@@ -3,6 +3,15 @@ package(default_visibility = ["//visibility:public"])
+ load(":conf.bzl", "CIRI_MAINNET_VARIABLES")
+ load(":conf.bzl", "CIRI_TESTNET_VARIABLES")
+ 
++config_setting(
++    name = "yocto_armeabi",
++    values = {
++        "crosstool_top": "@local_config_yocto_compiler//:toolchain",
++        "cpu": "armeabi",
++    },
++    visibility = ["//visibility:public"],
++)
++
+ cc_binary(
+     name = "ciri",
+     srcs = ["main.c"],
+diff --git a/ciri/workspace.bzl b/ciri/workspace.bzl
+new file mode 100644
+index 0000000..5ef4fb3
+--- /dev/null
++++ b/ciri/workspace.bzl
+@@ -0,0 +1,12 @@
++load("//third_party/toolchains/yocto:yocto_compiler_configure.bzl", "yocto_compiler_configure")
++
++def clean_dep(dep):
++    return str(Label(dep))
++
++def yocto_workspace(path_prefix = "", tf_repo_name = ""):
++    # Point //external/local_config_yocto_compiler to //external/yocto_compiler
++    yocto_compiler_configure(
++        name = "local_config_yocto_compiler",
++        build_file = clean_dep("//third_party/toolchains/yocto:BUILD"),
++        remote_config_repo = "../yocto_compiler",
++    )
+-- 
+2.7.4
+
