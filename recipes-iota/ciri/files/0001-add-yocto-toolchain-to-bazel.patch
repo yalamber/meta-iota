@@ -1,6 +1,6 @@
-From 7ca29698a1c6b979175556d0ca61534a2baed400 Mon Sep 17 00:00:00 2001
+From e9850e7c8270ce51ccd7c0de64c8b5f9d7747604 Mon Sep 17 00:00:00 2001
 From: Bernardo Rodrigues <bernardoaraujor@gmail.com>
-Date: Fri, 19 Jul 2019 22:09:39 +0200
+Date: Sun, 21 Jul 2019 11:17:04 +0200
 Subject: [PATCH] add yocto toolchain to bazel
 
 ---
@@ -11,13 +11,13 @@ Subject: [PATCH] add yocto toolchain to bazel
  create mode 100644 ciri/workspace.bzl
 
 diff --git a/WORKSPACE b/WORKSPACE
-index 95c3b5a..0bfff5c 100644
+index 55c4634..c59f918 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -48,3 +48,13 @@ setup_toolchains()
- load("//tools:snapshot.bzl", "fetch_snapshot_files")
+@@ -57,3 +57,13 @@ setup_initial_deps()
+ load("@iota_toolchains//:defs.bzl", "setup_toolchains_repositories")
  
- fetch_snapshot_files()
+ setup_toolchains_repositories()
 +
 +load("//ciri:workspace.bzl", "yocto_workspace")
 +
@@ -29,12 +29,11 @@ index 95c3b5a..0bfff5c 100644
 +
 +yocto_workspace()
 diff --git a/ciri/BUILD b/ciri/BUILD
-index 7686206..78bf908 100644
+index 6b754c1..f86960b 100644
 --- a/ciri/BUILD
 +++ b/ciri/BUILD
-@@ -3,6 +3,15 @@ package(default_visibility = ["//visibility:public"])
- load(":conf.bzl", "CIRI_MAINNET_VARIABLES")
- load(":conf.bzl", "CIRI_TESTNET_VARIABLES")
+@@ -1,5 +1,14 @@
+ package(default_visibility = ["//visibility:public"])
  
 +config_setting(
 +    name = "yocto_armeabi",
@@ -45,9 +44,9 @@ index 7686206..78bf908 100644
 +    visibility = ["//visibility:public"],
 +)
 +
- cc_binary(
-     name = "ciri",
-     srcs = ["main.c"],
+ load(":conf.bzl", "CIRI_MAINNET_VARIABLES")
+ load(":conf.bzl", "CIRI_TESTNET_VARIABLES")
+ 
 diff --git a/ciri/workspace.bzl b/ciri/workspace.bzl
 new file mode 100644
 index 0000000..5ef4fb3

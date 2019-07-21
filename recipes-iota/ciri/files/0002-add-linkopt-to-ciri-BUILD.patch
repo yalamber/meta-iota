@@ -1,17 +1,17 @@
-From 32bbf73900b71e2d8e7672f73836c14d4850c7b6 Mon Sep 17 00:00:00 2001
+From e4eb0856df7b7c894c9fb49d4f5403c3a97ceef5 Mon Sep 17 00:00:00 2001
 From: Bernardo Rodrigues <bernardoaraujor@gmail.com>
-Date: Fri, 19 Jul 2019 22:25:36 +0200
-Subject: [PATCH] add linkopt to ciri/BUILD
+Date: Sun, 21 Jul 2019 11:20:13 +0200
+Subject: [PATCH] add linkopt to ciri BUILD
 
 ---
  ciri/BUILD | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/ciri/BUILD b/ciri/BUILD
-index 78bf908..dbef140 100644
+index f86960b..8d5d156 100644
 --- a/ciri/BUILD
 +++ b/ciri/BUILD
-@@ -26,6 +26,7 @@ cc_binary(
+@@ -47,6 +47,7 @@ cc_binary(
          "//utils/handles:rand",
          "//utils/handles:signal",
      ],
