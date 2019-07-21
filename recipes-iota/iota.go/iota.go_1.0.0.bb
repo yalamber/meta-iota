@@ -1,5 +1,3 @@
-# Copyright (C) 2019 Bernardo Rodrigues <bernardoar@protonmail.com>
-
 SUMMARY = "IOTA Go API Library"
 DESCRIPTION = "This is the official Go client library, which allows you to do the following: \
     Create transactions \
@@ -38,6 +36,8 @@ SRC_URI = "\
            git://github.com/h2non/parth.git;protocol=https;name=parth;destsuffix=${PN}-${PV}/src/github.com/h2non/parth \
 "
 
+SRC_URI += "file://example-iri-go.go"
+
 BETA_V = "7"
 
 SRCREV_iota.go = "v${PV}-beta.${BETA_V}"
@@ -71,5 +71,13 @@ inherit go
 GO_IMPORT = "github.com/iotaledger/iota.go"
 
 do_compile_prepend(){
-    rm -rf src/github.com/iotaledger/iota.go/api/integration
+   rm -rf src/github.com/iotaledger/iota.go/api/integration
+   mkdir -p ${S}/src/github.com/iotaledger/iota.go/example-iri-go
+   cp ${WORKDIR}/example-iri-go.go ${S}/src/github.com/iotaledger/iota.go/example-iri-go
+}
+
+RDEPENDS_${PN}-dev = "bash"
+
+do_install_append(){
+    cp -r src/* ${D}${libdir}/go/src/
 }
