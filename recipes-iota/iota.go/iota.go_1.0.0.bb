@@ -76,6 +76,7 @@ do_compile_prepend(){
    cp ${WORKDIR}/example-iri-go.go ${S}/src/github.com/iotaledger/iota.go/example-iri-go
 }
 
+DEPENDS = "bash"
 RDEPENDS_${PN}-dev = "bash"
 
 do_install_append(){
