@@ -78,28 +78,38 @@ do_install(){
 SNAPSHOT_TIMESTAMP_MAINNET ?= "20190410"
 SNAPSHOT_TIMESTAMP_TESTNET ?= "20180329"
 
-FILES_${PN} += "${sysconfdir}/iota-ciri/snapshots/*"
+FILES_${PN} += "${sysconfdir}/iota/snapshots/*"
 
 do_install_snapshot(){
-    install -m 0755 -d ${D}${sysconfdir}/iota-ciri/snapshots/mainnet
-    install -m 0755 -d ${D}${sysconfdir}/iota-ciri/snapshots/testnet
+    install -m 0755 -d ${D}${sysconfdir}/iota/snapshots/mainnet
+    install -m 0755 -d ${D}${sysconfdir}/iota/snapshots/testnet
     
-    install -m 0644 ${WORKDIR}/snapshots/mainnet/${SNAPSHOT_TIMESTAMP_MAINNET}/snapshot.json ${D}${sysconfdir}/iota-ciri/snapshots/mainnet
-    install -m 0644 ${WORKDIR}/snapshots/mainnet/${SNAPSHOT_TIMESTAMP_MAINNET}/snapshot.sig ${D}${sysconfdir}/iota-ciri/snapshots/mainnet
-    install -m 0644 ${WORKDIR}/snapshots/mainnet/${SNAPSHOT_TIMESTAMP_MAINNET}/snapshot.txt ${D}${sysconfdir}/iota-ciri/snapshots/mainnet
+    install -m 0644 ${WORKDIR}/snapshots/mainnet/${SNAPSHOT_TIMESTAMP_MAINNET}/snapshot.json ${D}${sysconfdir}/iota/snapshots/mainnet
+    install -m 0644 ${WORKDIR}/snapshots/mainnet/${SNAPSHOT_TIMESTAMP_MAINNET}/snapshot.sig ${D}${sysconfdir}/iota/snapshots/mainnet
+    install -m 0644 ${WORKDIR}/snapshots/mainnet/${SNAPSHOT_TIMESTAMP_MAINNET}/snapshot.txt ${D}${sysconfdir}/iota/snapshots/mainnet
 
-    install -m 0644 ${WORKDIR}/snapshots/testnet/${SNAPSHOT_TIMESTAMP_TESTNET}/snapshot.json ${D}${sysconfdir}/iota-ciri/snapshots/testnet
-    install -m 0644 ${WORKDIR}/snapshots/testnet/${SNAPSHOT_TIMESTAMP_TESTNET}/snapshot.txt ${D}${sysconfdir}/iota-ciri/snapshots/testnet
+    install -m 0644 ${WORKDIR}/snapshots/testnet/${SNAPSHOT_TIMESTAMP_TESTNET}/snapshot.json ${D}${sysconfdir}/iota/snapshots/testnet
+    install -m 0644 ${WORKDIR}/snapshots/testnet/${SNAPSHOT_TIMESTAMP_TESTNET}/snapshot.txt ${D}${sysconfdir}/iota/snapshots/testnet
 }
 
-FILES_${PN} += "${sysconfdir}/iota-ciri/sql/*"
+FILES_${PN} += "${sysconfdir}/iota/sql/*"
 
 do_install_sql(){
-    install -m 0755 -d ${D}${sysconfdir}/iota-ciri/sql
+    install -m 0755 -d ${D}${sysconfdir}/iota/sql
 
-    install -m 0644 ${S}/common/storage/sql/spent-addresses-schema.sql ${D}${sysconfdir}/iota-ciri/sql
-    install -m 0644 ${S}/common/storage/sql/tangle-schema.sql ${D}${sysconfdir}/iota-ciri/sql
+    install -m 0644 ${S}/common/storage/sql/spent-addresses-schema.sql ${D}${sysconfdir}/iota/sql
+    install -m 0644 ${S}/common/storage/sql/tangle-schema.sql ${D}${sysconfdir}/iota/sql
 }
 
+FILES_${PN} += "${sysconfdir}/iota/config/conf.yml"
+
+do_install_yml(){
+    install -m 0755 -d ${D}${sysconfdir}/iota/config
+
+    install -m 0644 ${S}/ciri/conf.example.yml ${D}${sysconfdir}/iota/config/conf.yml
+}
+
+
 addtask do_install_snapshot after do_install before do_install_sql
-addtask do_install_sql after do_install_snapshot before do_package
+addtask do_install_sql after do_install_snapshot before do_install_yml
+addtask do_install_yml after do_install_sql before do_package
