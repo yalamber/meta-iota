@@ -101,5 +101,15 @@ do_install_sql(){
     install -m 0644 ${S}/common/storage/sql/tangle-schema.sql ${D}${sysconfdir}/iota/sql
 }
 
+FILES_${PN} += "${sysconfdir}/iota/config/conf.yml"
+
+do_install_yml(){
+    install -m 0755 -d ${D}${sysconfdir}/iota/config
+
+    install -m 0644 ${S}/ciri/conf.example.yml ${D}${sysconfdir}/iota/config/conf.yml
+}
+
+
 addtask do_install_snapshot after do_install before do_install_sql
-addtask do_install_sql after do_install_snapshot before do_package
+addtask do_install_sql after do_install_snapshot before do_install_yml
+addtask do_install_yml after do_install_sql before do_package
