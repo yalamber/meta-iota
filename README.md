@@ -30,7 +30,8 @@ The meta-iota layer depends on:
 ---
 ## Tutorials
 
- 
+ - [IOTA cIRI on a BeagleBone Black with Yocto Project and OpenEmbedded](https://medium.com/@bernardoaraujor/iota-ciri-on-a-beaglebone-black-with-yocto-project-and-openembedded-6dd5b1379a60)
+
 ---
 ## Donations
 If you find meta-iota useful, please consider making a donation:
@@ -39,8 +40,6 @@ If you find meta-iota useful, please consider making a donation:
  - **LTC**: LSpyeCjxY28z9VpYjoGJGE8QZLxUL7Rk6c
  - **ETH**: 0x6028475be0b1cf8a566bec7ff4b4f5d28406266e
  - **IOTA**:     SZOYDT9OGQXRIAVIRWXMRMQXI9QJYUU9LVSIXXDTLZTS9EEPJTRIVKNDIIXVXBINWNCOCXQUIYNIPFOFAMKG9PE9NA
-
-
 
 ---
 ## License
