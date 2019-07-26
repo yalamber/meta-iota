@@ -59,28 +59,32 @@ do_compile(){
     ${S}/bazel shutdown
 }
 
+FILES_${PN} += "${sysconfdir}/iota/config/conf.yml"
+FILES_${PN} += "${sysconfdir}/iota/snapshots/*"
+FILES_${PN} += "${sysconfdir}/iota/sql/*"
+
 # libmicrohttpd.so is provided by bazel, not libmicrohttpd's recipe
 # we need to install it manually and avoid QA errors
 FILES_${PN} += "${libdir}/libmicrohttpd.so"
 INSANE_SKIP_${PN} += " file-rdeps"
 INSANE_SKIP_${PN}-dev += "dev-elf"
 
+# IOTA Ledger snapshots
+# if you want to overwrite the timestamp, set it at local.conf
+SNAPSHOT_TIMESTAMP_MAINNET ?= "20190410"
+SNAPSHOT_TIMESTAMP_TESTNET ?= "20180329"
+
 do_install(){
+    # install binary and libmicrohttpd
+
     install -m 0755 -d ${D}${bindir}
     install -m 0755 -d ${D}${libdir}
 
     install -m 0755 ${S}/bazel-bin/ciri/ciri ${D}${bindir}
     install -m 0755 ${S}/bazel-out/armeabi-opt/bin/external/libmicrohttpd/libmicrohttpd.so ${D}${libdir}
-}
 
-# install IOTA Ledger snapshots
-# if you want to overwrite the timestamp, set it at local.conf
-SNAPSHOT_TIMESTAMP_MAINNET ?= "20190410"
-SNAPSHOT_TIMESTAMP_TESTNET ?= "20180329"
+    # install snapshots
 
-FILES_${PN} += "${sysconfdir}/iota/snapshots/*"
-
-do_install_snapshot(){
     install -m 0755 -d ${D}${sysconfdir}/iota/snapshots/mainnet
     install -m 0755 -d ${D}${sysconfdir}/iota/snapshots/testnet
     
@@ -90,26 +94,17 @@ do_install_snapshot(){
 
     install -m 0644 ${WORKDIR}/snapshots/testnet/${SNAPSHOT_TIMESTAMP_TESTNET}/snapshot.json ${D}${sysconfdir}/iota/snapshots/testnet
     install -m 0644 ${WORKDIR}/snapshots/testnet/${SNAPSHOT_TIMESTAMP_TESTNET}/snapshot.txt ${D}${sysconfdir}/iota/snapshots/testnet
-}
 
-FILES_${PN} += "${sysconfdir}/iota/sql/*"
+    # install sql schemas
 
-do_install_sql(){
     install -m 0755 -d ${D}${sysconfdir}/iota/sql
 
     install -m 0644 ${S}/common/storage/sql/spent-addresses-schema.sql ${D}${sysconfdir}/iota/sql
     install -m 0644 ${S}/common/storage/sql/tangle-schema.sql ${D}${sysconfdir}/iota/sql
-}
 
-FILES_${PN} += "${sysconfdir}/iota/config/conf.yml"
+    # install yaml config
 
-do_install_yml(){
     install -m 0755 -d ${D}${sysconfdir}/iota/config
 
     install -m 0644 ${S}/ciri/conf.example.yml ${D}${sysconfdir}/iota/config/conf.yml
 }
-
-
-addtask do_install_snapshot after do_install before do_install_sql
-addtask do_install_sql after do_install_snapshot before do_install_yml
-addtask do_install_yml after do_install_sql before do_package
