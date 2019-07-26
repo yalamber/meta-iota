@@ -21,11 +21,11 @@ The meta-iota layer depends on:
 
 	URI: git://git.openembedded.org/openembedded-core
 	layers: meta
-	branch: warrior
+	branch: warrior, thud
 
 	URI: git://git.openembedded.org/meta-openembedded
 	layers: meta-oe
-	branch: warrior
+	branch: warrior, thud
 	
 ---
 ## Tutorials
