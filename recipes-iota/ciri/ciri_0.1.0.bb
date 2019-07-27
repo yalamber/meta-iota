@@ -65,9 +65,9 @@ FILES_${PN} += "${sysconfdir}/iota/sql/*"
 
 # libmicrohttpd.so is provided by bazel, not libmicrohttpd's recipe
 # we need to install it manually and avoid QA errors
+FILES_${PN}-dev = ""
 FILES_${PN} += "${libdir}/libmicrohttpd.so"
 INSANE_SKIP_${PN} += " file-rdeps"
-INSANE_SKIP_${PN}-dev += "dev-elf"
 
 # IOTA Ledger snapshots
 # if you want to overwrite the timestamp, set it at local.conf
