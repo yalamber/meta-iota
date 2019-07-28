@@ -1,0 +1,25 @@
+From 20cc724eb41164adfc252ee44068f1ac107a5ec6 Mon Sep 17 00:00:00 2001
+From: Bernardo Rodrigues <bernardoaraujor@gmail.com>
+Date: Sat, 27 Jul 2019 19:50:24 +0200
+Subject: [PATCH] change iota_rules commit hash on WORKSPACE
+
+---
+ WORKSPACE | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/WORKSPACE b/WORKSPACE
+index 1ecf1d9..370d6d0 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -4,7 +4,7 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+ 
+ git_repository(
+     name = "rules_iota",
+-    commit = "73f598ad1ce3ba79ff22d747f723d6d5cbf351e1",
++    commit = "ec79b9e0e09ade0e3787150007c83f5feaf94c11",
+     remote = "https://github.com/iotaledger/rules_iota.git",
+ )
+ 
+-- 
+2.7.4
+

@@ -1,0 +1,68 @@
+From fd189eac6f661171ecde641f48c97cdf8b3884f2 Mon Sep 17 00:00:00 2001
+From: Bernardo Rodrigues <bernardoaraujor@gmail.com>
+Date: Sat, 27 Jul 2019 19:38:00 +0200
+Subject: [PATCH] add yocto toolchain to bazel
+
+---
+ WORKSPACE             | 10 ++++++++++
+ cclient/BUILD         |  9 +++++++++
+ cclient/workspace.bzl | 12 ++++++++++++
+ 3 files changed, 31 insertions(+)
+ create mode 100644 cclient/workspace.bzl
+
+diff --git a/WORKSPACE b/WORKSPACE
+index 55c4634..1ecf1d9 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -57,3 +57,13 @@ setup_initial_deps()
+ load("@iota_toolchains//:defs.bzl", "setup_toolchains_repositories")
+ 
+ setup_toolchains_repositories()
++
++load("//cclient:workspace.bzl", "yocto_workspace")
++
++new_local_repository(
++    name = "yocto_compiler",
++    path = "%%WORKDIR%%",
++    build_file = "//:BUILD.yocto_compiler",
++)
++
++yocto_workspace()
+diff --git a/cclient/BUILD b/cclient/BUILD
+index 97a44f7..9eb8d59 100644
+--- a/cclient/BUILD
++++ b/cclient/BUILD
+@@ -11,3 +11,12 @@ cc_library(
+         "//cclient/serialization:serializer_json",
+     ],
+ )
++
++config_setting(
++    name = "yocto_armeabi",
++    values = {
++        "crosstool_top": "@local_config_yocto_compiler//:toolchain",
++        "cpu": "armeabi",
++    },
++    visibility = ["//visibility:public"],
++)
+diff --git a/cclient/workspace.bzl b/cclient/workspace.bzl
+new file mode 100644
+index 0000000..5ef4fb3
+--- /dev/null
++++ b/cclient/workspace.bzl
+@@ -0,0 +1,12 @@
++load("//third_party/toolchains/yocto:yocto_compiler_configure.bzl", "yocto_compiler_configure")
++
++def clean_dep(dep):
++    return str(Label(dep))
++
++def yocto_workspace(path_prefix = "", tf_repo_name = ""):
++    # Point //external/local_config_yocto_compiler to //external/yocto_compiler
++    yocto_compiler_configure(
++        name = "local_config_yocto_compiler",
++        build_file = clean_dep("//third_party/toolchains/yocto:BUILD"),
++        remote_config_repo = "../yocto_compiler",
++    )
+-- 
+2.7.4
+
