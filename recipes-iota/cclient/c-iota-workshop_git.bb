@@ -70,7 +70,7 @@ do_install(){
     install -m 0755 ${S}/bazel-bin/examples/generate_address ${D}${bindir}
     install -m 0755 ${S}/bazel-bin/examples/check_balances ${D}${bindir}
 
-    # add iota_ prefix to binaries
+    # add iota_c_ prefix to binaries
     cd ${D}${bindir}
-    for FILENAME in *; do mv $FILENAME iota_$FILENAME; done 
+    for FILENAME in *; do mv $FILENAME iota_c_$FILENAME; done 
 }
