@@ -1,0 +1,80 @@
+From 8c7e2187a854e5c430ab6d06db9ad2b6e45c69f2 Mon Sep 17 00:00:00 2001
+From: bernardo araujo rodrigues <bernardo.araujo@silicon-gears.com>
+Date: Mon, 29 Jul 2019 16:37:28 +0200
+Subject: [PATCH] add yocto toolchain to bazel
+
+---
+ WORKSPACE         | 12 +++++++++++-
+ app/BUILD         | 11 ++++++++++-
+ app/workspace.bzl | 12 ++++++++++++
+ 3 files changed, 33 insertions(+), 2 deletions(-)
+ create mode 100644 app/workspace.bzl
+
+diff --git a/WORKSPACE b/WORKSPACE
+index e74d4de..55597bc 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -19,4 +19,14 @@ git_repository(
+ )
+ 
+ load("@rules_iota//:defs.bzl", "iota_deps")
+-iota_deps()
+\ No newline at end of file
++iota_deps()
++
++load("//app:workspace.bzl", "yocto_workspace")
++
++new_local_repository(
++    name = "yocto_compiler",
++    path = "%%WORKDIR%%",
++    build_file = "BUILD.yocto_compiler",
++)
++
++yocto_workspace()
+diff --git a/app/BUILD b/app/BUILD
+index 0b7ee73..90d39bc 100644
+--- a/app/BUILD
++++ b/app/BUILD
+@@ -1,5 +1,14 @@
+ package(default_visibility = ["//visibility:public"])
+ 
++config_setting(
++    name = "yocto_armeabi",
++    values = {
++        "crosstool_top": "@local_config_yocto_compiler//:toolchain",
++        "cpu": "armeabi",
++    },
++    visibility = ["//visibility:public"],
++)
++
+ cc_binary(
+     name = "app",
+     srcs = ["sensor_receiver.c"],
+@@ -14,4 +23,4 @@ cc_binary(
+     ],
+     copts = ["-DLOGGER_ENABLE"],
+     linkopts = ["-pthread"],
+-)
+\ No newline at end of file
++)
+diff --git a/app/workspace.bzl b/app/workspace.bzl
+new file mode 100644
+index 0000000..5ef4fb3
+--- /dev/null
++++ b/app/workspace.bzl
+@@ -0,0 +1,12 @@
++load("//third_party/toolchains/yocto:yocto_compiler_configure.bzl", "yocto_compiler_configure")
++
++def clean_dep(dep):
++    return str(Label(dep))
++
++def yocto_workspace(path_prefix = "", tf_repo_name = ""):
++    # Point //external/local_config_yocto_compiler to //external/yocto_compiler
++    yocto_compiler_configure(
++        name = "local_config_yocto_compiler",
++        build_file = clean_dep("//third_party/toolchains/yocto:BUILD"),
++        remote_config_repo = "../yocto_compiler",
++    )
+-- 
+2.7.4
+
