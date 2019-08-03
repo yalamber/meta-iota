@@ -1,0 +1,70 @@
+From e9850e7c8270ce51ccd7c0de64c8b5f9d7747604 Mon Sep 17 00:00:00 2001
+From: Bernardo Rodrigues <bernardoaraujor@gmail.com>
+Date: Sun, 21 Jul 2019 11:17:04 +0200
+Subject: [PATCH] add yocto toolchain to bazel
+
+---
+ WORKSPACE          | 10 ++++++++++
+ ciri/BUILD         |  9 +++++++++
+ ciri/workspace.bzl | 12 ++++++++++++
+ 3 files changed, 31 insertions(+)
+ create mode 100644 ciri/workspace.bzl
+
+diff --git a/WORKSPACE b/WORKSPACE
+index 55c4634..c59f918 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -57,3 +57,13 @@ setup_initial_deps()
+ load("@iota_toolchains//:defs.bzl", "setup_toolchains_repositories")
+ 
+ setup_toolchains_repositories()
++
++load("//ciri:workspace.bzl", "yocto_workspace")
++
++new_local_repository(
++    name = "yocto_compiler",
++    path = "%%WORKDIR%%",
++    build_file = "//:BUILD.yocto_compiler",
++)
++
++yocto_workspace()
+diff --git a/ciri/BUILD b/ciri/BUILD
+index 6b754c1..f86960b 100644
+--- a/ciri/BUILD
++++ b/ciri/BUILD
+@@ -1,5 +1,14 @@
+ package(default_visibility = ["//visibility:public"])
+ 
++config_setting(
++    name = "yocto_armeabi",
++    values = {
++        "crosstool_top": "@local_config_yocto_compiler//:toolchain",
++        "cpu": "armeabi",
++    },
++    visibility = ["//visibility:public"],
++)
++
+ load(":conf.bzl", "CIRI_MAINNET_VARIABLES")
+ load(":conf.bzl", "CIRI_TESTNET_VARIABLES")
+ 
+diff --git a/ciri/workspace.bzl b/ciri/workspace.bzl
+new file mode 100644
+index 0000000..5ef4fb3
+--- /dev/null
++++ b/ciri/workspace.bzl
+@@ -0,0 +1,12 @@
++load("//third_party/toolchains/yocto:yocto_compiler_configure.bzl", "yocto_compiler_configure")
++
++def clean_dep(dep):
++    return str(Label(dep))
++
++def yocto_workspace(path_prefix = "", tf_repo_name = ""):
++    # Point //external/local_config_yocto_compiler to //external/yocto_compiler
++    yocto_compiler_configure(
++        name = "local_config_yocto_compiler",
++        build_file = clean_dep("//third_party/toolchains/yocto:BUILD"),
++        remote_config_repo = "../yocto_compiler",
++    )
+-- 
+2.7.4
+

@@ -15,7 +15,7 @@ SRC_URI = " \
 
 SRCREV = "${AUTOREV}"
 
-DEPENDS += " bazel-native"
+DEPENDS += " bazel-native entangled"
 
 inherit bazel
 
