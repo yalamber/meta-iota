@@ -1,3 +1,8 @@
+# this recipe was borrowed from meta-iot-cloud
+# it was originally written by Intel.
+# the original version can be found at:
+# https://github.com/intel-iot-devkit/meta-iot-cloud
+
 DESCRIPTION = "Ultralightweight JSON parser in ANSI C"
 HOMEPAGE = "https://github.com/DaveGamble/cJSON"
 AUTHOR = "Dave Gamble"
