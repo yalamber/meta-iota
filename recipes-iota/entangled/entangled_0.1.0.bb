@@ -95,6 +95,7 @@ do_install(){
     cp -r ${S}/mam ${D}${includedir}
     cp -r ${S}/common ${D}${includedir}
     cp -r ${S}/utils ${D}${includedir}
+    install -m 0644 ${S}/bazel-out/armeabi-opt/bin/utils/containers/hash/*.h ${D}${includedir}/utils/containers/hash
 
     ## install headers
     # delete everything that's not *.h
