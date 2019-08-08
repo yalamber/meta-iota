@@ -9,12 +9,13 @@ SRC_URI = " \
 
 SRCREV = "${AUTOREV}"
 
-DEPENDS += " entangled"
+DEPENDS += " entangled mbedtls http-parser uthash keccak logger"
 
 S = "${WORKDIR}/git"
 
-CFLAGS_prepend = "-I${S} "
+#CFLAGS_prepend = "-I${S} "
+
 
 do_compile(){
-    ${CC} iota/common.c -o common
+    ${CC} iota/common.c -lcclient -lmam
 }
