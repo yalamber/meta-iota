@@ -1,0 +1,25 @@
+From ab7039a58315f2e4327d42fe4827a169fe5300cf Mon Sep 17 00:00:00 2001
+From: bernardo rodrigues <bernardo.araujo@silicon-gears.com>
+Date: Thu, 8 Aug 2019 11:55:18 -0400
+Subject: [PATCH] fix mam_api_bundle_write_header_on_channel
+
+---
+ iota/send-common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/iota/send-common.c b/iota/send-common.c
+index e3f9f00..10fbb1e 100644
+--- a/iota/send-common.c
++++ b/iota/send-common.c
+@@ -98,7 +98,7 @@ retcode_t mam_example_write_header_on_channel(mam_api_t* const api, tryte_t cons
+     }
+   }
+ 
+-  if ((ret = mam_api_bundle_write_header_on_channel(api, channel_id, psks, NULL, 0, bundle, msg_id)) != RC_OK) {
++  if ((ret = mam_api_bundle_write_header_on_channel(api, channel_id, psks, NULL, bundle, msg_id)) != RC_OK) {
+     return ret;
+   }
+   mam_psk_t_set_free(&psks);
+-- 
+2.7.4
+
