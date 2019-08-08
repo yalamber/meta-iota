@@ -32,6 +32,10 @@ do_install() {
     ## install headers
     # delete everything that's not *.h
     find ${D}${includedir}/keccak -type f -not -name '*.h' -print0 | xargs -0 -I {} rm -r {}
+
+    ## install headers
+    # place all headers in root keccak directory
+    find ${D}${includedir}/keccak -type f -name '*.h' -print0 | xargs -0 -I {} cp {} ${D}${includedir}/keccak
 }
 
 BBCLASSEXTEND = "native nativesdk"
