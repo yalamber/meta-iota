@@ -4,7 +4,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 SRC_URI = " \
-            git://github.com/iota-community/env-sensor-mam-reader.git;branch=json; \
+            git://github.com/iota-community/env-sensor-mam-writer.git;branch=json; \
 "
 
 SRCREV = "${AUTOREV}"
