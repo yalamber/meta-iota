@@ -5,6 +5,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = " \
             git://github.com/iota-community/env-sensor-mam-writer.git;branch=json; \
+	    file://0002-fix-mam_api_bundle_write_header_on_endpoint.patch \
+	    file://0003-fix-mam_api_bundle_write_header_on_channel.patch \
+	    file://0004-fix-MAM_ENDPOINT_ID_TRYTE_SIZE.patch \
+	    file://0005-fix-MAM_CHANNEL_ID_TRYTE_SIZE.patch \
 "
 
 SRCREV = "${AUTOREV}"
@@ -17,5 +21,6 @@ S = "${WORKDIR}/git"
 
 
 do_compile(){
-    ${CC} iota/common.c -lcclient -lmam
+    ${CC} -c iota/common.c -lcclient -lmam
+    ${CC} -c iota/send-common.c 
 }
