@@ -13,9 +13,6 @@ DEPENDS += " mam mbedtls http-parser uthash keccak logger"
 
 S = "${WORKDIR}/git"
 
-#CFLAGS_prepend = "-I${S} "
-
-
 do_compile(){
     ${CC} -c iota/common.c
     ${CC} -c iota/send-common.c
