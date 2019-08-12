@@ -9,6 +9,7 @@ SRC_URI = " \
 	    file://0003-fix-mam_api_bundle_write_header_on_channel.patch \
 	    file://0004-fix-MAM_ENDPOINT_ID_TRYTE_SIZE.patch \
 	    file://0005-fix-MAM_CHANNEL_ID_TRYTE_SIZE.patch \
+	    file://0006-fix-mam_msg_pubkey_e-enum-case.patch \
 "
 
 SRCREV = "${AUTOREV}"
@@ -21,6 +22,9 @@ S = "${WORKDIR}/git"
 
 
 do_compile(){
-    ${CC} -c iota/common.c -lcclient -lmam
-    ${CC} -c iota/send-common.c 
+    ${CC} -c iota/common.c
+    ${CC} -c iota/send-common.c
+    ${CC} -c iota/send-header.c
+    ${CC} -c iota/send-msg.c
+    ${CC} -c iota/send-packet.c
 }
