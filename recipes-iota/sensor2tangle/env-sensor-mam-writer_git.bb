@@ -14,7 +14,7 @@ SRC_URI = " \
 
 SRCREV = "${AUTOREV}"
 
-DEPENDS += " entangled mbedtls http-parser uthash keccak logger"
+DEPENDS += " mam mbedtls http-parser uthash keccak logger"
 
 S = "${WORKDIR}/git"
 
