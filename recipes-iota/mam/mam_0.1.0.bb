@@ -14,11 +14,9 @@ SRC_URI = " \
 	    file://BUILD.yocto_compiler \
 	    file://CROSSTOOL.tpl \
 	    file://yocto_compiler_configure.bzl \
-	    git://github.com/iotaledger/snapshots.git;name=snapshots;destsuffix=snapshots \
 "
 
 SRCREV_entangled = "f0ab6522942ff02bc95f84d37ca1bd2a0a267dfe"
-SRCREV_snapshots = "${AUTOREV}"
 
 DEPENDS += " bazel-native"
 
