@@ -10,7 +10,25 @@ SRC_URI = "git://github.com/nanopb/nanopb.git;nobranch=1;tag=${PV}"
 inherit cmake pythonnative
 
 DEPENDS = "protobuf-native"
+RDEPENDS_${PN}-native = "python-six-native python-protobuf-native"
 
 S = "${WORKDIR}/git"
 
 FILES_${PN} = "${libdir}/python2.7"
+
+BBCLASSEXTEND = "native nativesdk"
+
+FILES_${PN} += "${sysconfdir}/nanopb/"
+
+do_compile_append(){
+    cd ${S}/generator/proto
+    oe_runmake
+}
+
+do_install_append(){
+    install -m 0755 -d ${D}${sysconfdir}/nanopb/
+    cp -r ${S}/generator ${D}${sysconfdir}/nanopb/
+
+    install -m 0755 -d ${D}${includedir}
+    install -m 0644 ${S}/*.h ${D}${includedir}
+}
