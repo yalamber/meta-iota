@@ -5,7 +5,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 SRC_URI = " \
-            git://github.com/iota-community/env-sensor-mam-writer.git;branch=json; \
+            git://github.com/bernardoaraujor/env-sensor-mam-writer.git; \
 "
 
 SRCREV = "${AUTOREV}"
@@ -17,12 +17,14 @@ inherit pythonnative
 S = "${WORKDIR}/git"
 
 do_configure(){
+    mkdir -p ${S}/proto_compiled
+
     protoc --plugin=${RECIPE_SYSROOT_NATIVE}/opt/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/DataRequest.proto
     protoc --plugin=${RECIPE_SYSROOT_NATIVE}/opt/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/DataResponse.proto
     protoc --plugin=${RECIPE_SYSROOT_NATIVE}/opt/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/FeatureResponse.proto
 
-    rm ${S}/proto_compiled/*.pb.*
     mv ${S}/proto_compiled/iota/proto/* ${S}/proto_compiled
+    rm -r ${S}/proto_compiled/iota
 }
 
 do_compile(){
