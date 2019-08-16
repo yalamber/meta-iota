@@ -16,9 +16,9 @@ inherit pythonnative
 S = "${WORKDIR}/git"
 
 do_configure(){
-    protoc --plugin=${RECIPE_SYSROOT_NATIVE}/etc/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/DataRequest.proto
-    protoc --plugin=${RECIPE_SYSROOT_NATIVE}/etc/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/DataResponse.proto
-    protoc --plugin=${RECIPE_SYSROOT_NATIVE}/etc/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/FeatureResponse.proto
+    protoc --plugin=${RECIPE_SYSROOT_NATIVE}/opt/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/DataRequest.proto
+    protoc --plugin=${RECIPE_SYSROOT_NATIVE}/opt/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/DataResponse.proto
+    protoc --plugin=${RECIPE_SYSROOT_NATIVE}/opt/nanopb/generator/protoc-gen-nanopb --nanopb_out=${S}/proto_compiled iota/proto/FeatureResponse.proto
 
     rm ${S}/proto_compiled/*.pb.*
     mv ${S}/proto_compiled/iota/proto/* ${S}/proto_compiled
