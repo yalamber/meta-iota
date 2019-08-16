@@ -18,7 +18,7 @@ FILES_${PN} = "${libdir}/python2.7"
 
 BBCLASSEXTEND = "native nativesdk"
 
-FILES_${PN} += "${sysconfdir}/nanopb/"
+FILES_${PN} += "/opt/nanopb/"
 
 do_compile_append(){
     cd ${S}/generator/proto
@@ -26,8 +26,8 @@ do_compile_append(){
 }
 
 do_install_append(){
-    install -m 0755 -d ${D}${sysconfdir}/nanopb/
-    cp -r ${S}/generator ${D}${sysconfdir}/nanopb/
+    install -m 0755 -d ${D}/opt/nanopb/
+    cp -r ${S}/generator ${D}/opt/nanopb/
 
     install -m 0755 -d ${D}${includedir}
     install -m 0644 ${S}/*.h ${D}${includedir}
