@@ -9,12 +9,14 @@ SRC_URI = "git://github.com/nanopb/nanopb.git;nobranch=1;tag=${PV}"
 
 inherit cmake pythonnative
 
+EXTRA_OECMAKE += "-DBUILD_SHARED_LIBS=ON"
+
 DEPENDS = "protobuf-native"
 RDEPENDS_${PN}-native = "python-six-native python-protobuf-native"
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} = "${libdir}/python2.7"
+FILES_${PN} = "${libdir}"
 
 BBCLASSEXTEND = "native nativesdk"
 
