@@ -57,11 +57,29 @@ do_compile(){
 }
 
 FILES_${PN}-dev = ""
-FILES_${PN} += "${libdir}/libcclient.so"
+FILES_${PN} += "${libdir}/libcclient.so ${includedir}"
 
 do_install(){
     # install libcclient.so
     install -m 0755 -d ${D}${libdir}
 
     install -m 0755 ${S}/bazel-bin/cclient/api/libcclient.so ${D}${libdir}
+
+    ## install headers
+    # copy a bunch of stuff (including headers)
+
+    install -m 0755 -d ${D}${includedir}
+    cp -r ${S}/cclient ${D}${includedir}
+    cp -r ${S}/mam ${D}${includedir}
+    cp -r ${S}/common ${D}${includedir}
+    cp -r ${S}/utils ${D}${includedir}
+    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/utils/containers/hash/*.h ${D}${includedir}/utils/containers/hash
+    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/mam/api/*.h ${D}${includedir}/mam/api
+    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/mam/mam/*.h ${D}${includedir}/mam/mam
+    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/mam/ntru/*.h ${D}${includedir}/mam/ntru
+    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/mam/psk/*.h ${D}${includedir}/mam/psk
+
+    ## install headers
+    # delete everything that's not *.h
+    find ${D}${includedir} -type f -not -name '*.h' -print0 | xargs -0 -I {} rm -r {}
 }
