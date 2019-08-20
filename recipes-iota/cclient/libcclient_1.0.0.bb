@@ -51,7 +51,7 @@ do_compile(){
         --crosstool_top=@local_config_yocto_compiler//:toolchain \
         --verbose_failures \
         --copt -DTF_LITE_DISABLE_X86_NEON \
-        //cclient/api:libcclient.so
+        //cclient/api:libcclient.so \
 
     ${S}/bazel shutdown
 }
@@ -73,11 +73,7 @@ do_install(){
     cp -r ${S}/mam ${D}${includedir}
     cp -r ${S}/common ${D}${includedir}
     cp -r ${S}/utils ${D}${includedir}
-    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/utils/containers/hash/*.h ${D}${includedir}/utils/containers/hash
-    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/mam/api/*.h ${D}${includedir}/mam/api
-    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/mam/mam/*.h ${D}${includedir}/mam/mam
-    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/mam/ntru/*.h ${D}${includedir}/mam/ntru
-    #install -m 0644 ${S}/bazel-out/armeabi-opt/bin/mam/psk/*.h ${D}${includedir}/mam/psk
+    install -m 0644 ${S}/bazel-out/armeabi-opt/bin/utils/containers/hash/*.h ${D}${includedir}/utils/containers/hash
 
     ## install headers
     # delete everything that's not *.h
