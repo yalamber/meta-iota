@@ -37,5 +37,16 @@ do_compile(){
 
     ${CC} -I${S} -c logging/logging.c
 
-    ${CC} -I${S} -c encode/encode.c
+    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -c proto_compiled/DataRequest.pb.c -o DataRequest.pb.o
+    ${AR} rcs libDataRequest.a DataRequest.pb.o
+
+    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -c proto_compiled/DataResponse.pb.c -o DataResponse.pb.o
+    ${AR} rcs libDataResponse.a DataResponse.pb.o
+
+    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -c proto_compiled/FeatureResponse.pb.c -o FeatureResponse.pb.o
+    ${AR} rcs libFeatureResponse.a FeatureResponse.pb.o
+
+    ${CC} -I${S} -c encode/encode.c -L. -lDataRequest -lDataResponse -lFeatureResponse -lprotobuf-nanopb
+
+    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o env-sensor-mam-writer iota/common.c iota/send-common.c iota/send-header.c iota/send-msg.c iota/send-packet.c iota/recv.c logging/logging.c encode/encode.c encode/decode.c app/server-client.c -lmam -lcclient -lprotobuf-nanopb -lm -lpthread
 }
