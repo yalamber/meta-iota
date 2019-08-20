@@ -11,8 +11,14 @@ SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = " libcclient"
+DEPENDS = " libcclient uthash keccak logger"
+RDEPENDS_${PN} = "libcclient"
 
 do_compile(){
-   ${CC} -I${S} ${CFLAGS} ${LDFLAGS} iota_client_service/client_service.c 
+   ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_c_hello_world examples/e01_hello_world.c iota_client_service/client_service.c -lcclient
+}
+
+do_install(){
+    install -m 0755 -d ${D}${bindir}
+    install -m 0755 ${S}/iota_c_hello_world ${D}${bindir}
 }
