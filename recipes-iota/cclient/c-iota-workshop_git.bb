@@ -16,9 +16,19 @@ RDEPENDS_${PN} = "libcclient"
 
 do_compile(){
    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_c_hello_world examples/e01_hello_world.c iota_client_service/client_service.c -lcclient
+   ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_c_send_hello examples/e02_send_hello.c iota_client_service/client_service.c -lcclient
+   ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_c_receive_hello examples/e03_receive_hello.c iota_client_service/client_service.c -lcclient
+   ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_c_generate_address examples/e04_generate_address.c iota_client_service/client_service.c -lcclient
+   ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_c_check_balance examples/e05_check_balance.c iota_client_service/client_service.c -lcclient
+   ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_c_send_tokens examples/e06_send_tokens.c iota_client_service/client_service.c -lcclient
 }
 
 do_install(){
     install -m 0755 -d ${D}${bindir}
     install -m 0755 ${S}/iota_c_hello_world ${D}${bindir}
+    install -m 0755 ${S}/iota_c_send_hello ${D}${bindir}
+    install -m 0755 ${S}/iota_c_receive_hello ${D}${bindir}
+    install -m 0755 ${S}/iota_c_generate_address ${D}${bindir}
+    install -m 0755 ${S}/iota_c_check_balance ${D}${bindir}
+    install -m 0755 ${S}/iota_c_send_tokens ${D}${bindir}
 }
