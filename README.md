@@ -12,7 +12,7 @@ Together, these projects provides a flexible set of tools and a space where embe
 
 The **meta-iota** OpenEmbedded Layer aims to provide recipes for IOTA related programs, tools and libraries in order to support the IOTA Tangle Ledger on a large variety of embedded devices.
  
-Any collaborations (issues, patches, pull requests, suggestions) are more than welcome: <bernardoar@protonmail.com>
+Any collaborations (issues, patches, pull requests, suggestions) are more than welcome: <bernardoaraujor@gmail.com>
 
 ---
 ## Dependencies
