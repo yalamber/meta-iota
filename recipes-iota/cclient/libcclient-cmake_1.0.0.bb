@@ -10,7 +10,7 @@ SRC_URI = " \
 
 SRCREV = "ca267a49bad4ce207620b3bdcb3fa0a30a501b67"
 
-DEPENDS = "keccak uthash mbedtls logger http-parser cjson unity"
+DEPENDS = "keccak uthash mbedtls logger http-parser cjson"
 
 inherit cmake
 
