@@ -1,0 +1,25 @@
+From d47100b944f1227bbff04231ccaeedfeb4739a39 Mon Sep 17 00:00:00 2001
+From: Bernardo Rodrigues <bernardoaraujor@gmail.com>
+Date: Sat, 24 Aug 2019 12:30:01 +0200
+Subject: [PATCH] remove native gcc options
+
+---
+ lib/LowLevel.build | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/lib/LowLevel.build b/lib/LowLevel.build
+index 7d612ee..2424066 100644
+--- a/lib/LowLevel.build
++++ b/lib/LowLevel.build
+@@ -141,8 +141,6 @@ The fragments below allow to select the desired implementation of the permutatio
+         <gcc>-fomit-frame-pointer</gcc>
+         <gcc>-O2</gcc>
+         <gcc>-g0</gcc>
+-        <gcc>-march=native</gcc>
+-        <gcc>-mtune=native</gcc>
+     </fragment>
+ 
+     <!-- Keccak-p[200] -->
+-- 
+2.7.4
+

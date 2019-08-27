@@ -4,7 +4,10 @@ HOMEPAGE = "https://keccak.team/"
 LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
-SRC_URI = "git://github.com/XKCP/XKCP.git"
+SRC_URI = " \
+            git://github.com/XKCP/XKCP.git \
+            file://0001-remove-native-gcc-options.patch \
+"
 SRCREV = "87944d97ee18978aa0ea8486edbb7acb08a8564a"
 
 PR = "r0"
