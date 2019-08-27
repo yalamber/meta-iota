@@ -11,7 +11,7 @@ SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = " libcclient-cmake uthash keccak logger"
+DEPENDS = " libcclient uthash keccak logger"
 
 do_compile(){
    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_c_hello_world examples/e01_hello_world.c iota_client_service/client_service.c -lcclient -lcommon -lcjson -lkeccak -lmbedtls -lmbedcrypto -lmbedx509 -lhttp_parser -llogger -pthread
