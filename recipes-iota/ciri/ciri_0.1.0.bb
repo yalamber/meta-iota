@@ -7,7 +7,10 @@ SRC_URI = " \
             git://github.com/iotaledger/entangled;branch=develop;name=entangled \
 	    file://0001-add-yocto-toolchain-to-bazel.patch \
 	    file://0002-add-linkopt-to-ciri-BUILD.patch \
-	    file://0003-set-iota_rules-to-fork.patch \
+	    file://0003-remove-bazel_skylib-from-WORKSPACE.patch \
+	    file://0004-remove-unused-definitions-from-WORKSPACE.patch \
+	    file://0005-rm-docker-rules-from-ciri-BUILD.patch \
+	    file://0006-set-iota_rules-to-fork.patch \
 	    file://BUILD \
 	    file://BUILD.yocto_compiler \
 	    file://CROSSTOOL.tpl \
@@ -15,7 +18,7 @@ SRC_URI = " \
 	    git://github.com/iotaledger/snapshots.git;name=snapshots;destsuffix=snapshots \
 "
 
-SRCREV_entangled = "7746ae0f905ae8e54a68869558d14285a2d1aaf7"
+SRCREV_entangled = "ciri-0.1.0-alpha"
 SRCREV_snapshots = "${AUTOREV}"
 
 DEPENDS += " bazel-native"
@@ -63,12 +66,6 @@ FILES_${PN} += "${sysconfdir}/iota/config/conf.yml"
 FILES_${PN} += "${sysconfdir}/iota/snapshots/*"
 FILES_${PN} += "${sysconfdir}/iota/sql/*"
 
-# libmicrohttpd.so is provided by bazel, not libmicrohttpd's recipe
-# we need to install it manually and avoid QA errors
-FILES_${PN}-dev = ""
-FILES_${PN} += "${libdir}/libmicrohttpd.so"
-INSANE_SKIP_${PN} += " file-rdeps"
-
 # IOTA Ledger snapshots
 # if you want to overwrite the timestamp, set it at local.conf
 SNAPSHOT_TIMESTAMP_MAINNET ?= "20190410"
@@ -78,10 +75,8 @@ do_install(){
     # install binary and libmicrohttpd
 
     install -m 0755 -d ${D}${bindir}
-    install -m 0755 -d ${D}${libdir}
 
     install -m 0755 ${S}/bazel-bin/ciri/ciri ${D}${bindir}
-    install -m 0755 ${S}/bazel-out/armeabi-opt/bin/external/libmicrohttpd/libmicrohttpd.so ${D}${libdir}
 
     # install snapshots
 
@@ -99,8 +94,8 @@ do_install(){
 
     install -m 0755 -d ${D}${sysconfdir}/iota/sql
 
-    install -m 0644 ${S}/common/storage/sql/spent-addresses-schema.sql ${D}${sysconfdir}/iota/sql
-    install -m 0644 ${S}/common/storage/sql/tangle-schema.sql ${D}${sysconfdir}/iota/sql
+    install -m 0644 ${S}/common/storage/sql/sqlite3/spent-addresses-schema.sql ${D}${sysconfdir}/iota/sql
+    install -m 0644 ${S}/common/storage/sql/sqlite3/tangle-schema.sql ${D}${sysconfdir}/iota/sql
 
     # install yaml config
 
