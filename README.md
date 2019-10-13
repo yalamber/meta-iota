@@ -44,4 +44,4 @@ If you find meta-iota useful, please consider making a donation:
 ---
 ## License
 
-meta-iota is released under the [MIT](https://github.com/bernardoaraujor/meta-iota/blob/master/COPYING.MIT).
+meta-iota is released under the [MIT License](https://github.com/bernardoaraujor/meta-iota/blob/master/COPYING.MIT).
