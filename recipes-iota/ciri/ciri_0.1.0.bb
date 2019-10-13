@@ -72,7 +72,7 @@ SNAPSHOT_TIMESTAMP_MAINNET ?= "20190410"
 SNAPSHOT_TIMESTAMP_TESTNET ?= "20180329"
 
 do_install(){
-    # install binary and libmicrohttpd
+    # install executable
 
     install -m 0755 -d ${D}${bindir}
 
