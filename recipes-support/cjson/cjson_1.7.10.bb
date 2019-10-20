@@ -29,3 +29,7 @@ EXTRA_OECMAKE += "\
     -DENABLE_CUSTOM_COMPILER_FLAGS=OFF \
     -DBUILD_SHARED_AND_STATIC_LIBS=On \
 "
+
+do_install_append(){
+    install -m 0644 ${S}/cJSON.h ${D}${includedir}
+}
