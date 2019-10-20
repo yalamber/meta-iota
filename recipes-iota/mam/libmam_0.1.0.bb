@@ -46,3 +46,8 @@ do_configure_prepend(){
     cp ${WORKDIR}/hash*.c ${S}/utils/containers/hash
     cp ${WORKDIR}/hash*.h ${S}/utils/containers/hash
 }
+
+# leaving the headers on /usr/include/entangled causes incompatibility with the includes
+do_install_append(){
+    mv ${D}${includedir}/entangled/* ${D}${includedir}
+}

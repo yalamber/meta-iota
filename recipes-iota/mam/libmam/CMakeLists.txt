@@ -188,4 +188,5 @@ target_link_libraries(mam-examples PUBLIC
   mam-api
 )
 
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/mam/" DESTINATION "${CMAKE_INSTALL_PREFIX}/include/entangled/mam" FILES_MATCHING PATTERN "*.h")
 install(TARGETS mam mam-api mam-examples DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
