@@ -25,8 +25,8 @@ set(COMMON_TRINARY
 set(COMMON_CRYPTO
     ${COMMON_DIR}/crypto/ftroika/ftroika.c
     ${COMMON_DIR}/crypto/troika/troika.c
-#    ${COMMON_DIR}/crypto/ftroika/ftroika.h
-#    ${COMMON_DIR}/crypto/troika/troika.h
+    ${COMMON_DIR}/crypto/ftroika/ftroika.h
+    ${COMMON_DIR}/crypto/troika/troika.h
 )
 
 #==============mam source=====================
@@ -152,41 +152,31 @@ set(MAM
 #==============end of mam source=====================
 
 add_library(mam ${MAM})
+add_library(mam-api ${MAM_API})
+add_library(mam-examples ${MAM_EXAMPLES})
+add_library(trinary ${COMMON_TRINARY})
+add_library(common-crypto ${COMMON_CRYPTO})
 
 add_dependencies(mam
-  entangled::common
+      	entangled::common
+	common-crypto
 )
 
-add_library(trinary
-  ${COMMON_TRINARY}
-)
-
-add_library(common-crypto
-  ${COMMON_CRYPTO}
-)
-
-add_library(mam-api
-  ${MAM_API}
-)
 target_link_libraries(mam PUBLIC
-  common-crypto
   entangled::common
+  common-crypto
 )
-
 
 target_link_libraries(mam-api PUBLIC
   mam
-  common                                          #simplify
+  entangled::common
 )
 
-add_library(mam-examples
-  ${MAM_EXAMPLES}
-)
 target_link_libraries(mam-examples PUBLIC
-  cclient
-  common
+  entangled::cclient
+  entangled::common
   mam-api
 )
 
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/mam/" DESTINATION "${CMAKE_INSTALL_PREFIX}/include/entangled/mam" FILES_MATCHING PATTERN "*.h")
-install(TARGETS mam mam-api mam-examples DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
+install(TARGETS mam mam-api mam-examples common-crypto DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
