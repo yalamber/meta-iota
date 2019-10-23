@@ -12,6 +12,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7ca
 SRC_URI = " \
             git://github.com/iotaledger/entangled.git;branch=develop \
 	    file://0001-add-YOCTO-option-to-CMakeLists.txt.patch \
+	    file://0002-flex-trit-encoding-3-trits-per-byte.patch \
 	    file://CMakeLists.txt \   
 	    file://trit_t_to_mam_msg.tar.gz \
 	    file://hash_containers.tar.gz \
