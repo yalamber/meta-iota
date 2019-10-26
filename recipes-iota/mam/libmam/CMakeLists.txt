@@ -1,3 +1,8 @@
+# Borrowed from iot2tangle' cmake-mam
+# Find the original at https://github.com/iot2tangle/cmake-mam
+# Written by Daniel Carpincho (github.com/demichele) and Alejandro Elustondo (github.com/aleelus).
+# Adapted to the BitBake environment by Bernardo Rodrigues (github.com/bernardoaraujor).
+
 set(ENTANGLED_DIR ${CMAKE_SOURCE_DIR})
 set(MAM_DIR ${ENTANGLED_DIR}/mam)
 set(COMMON_DIR ${ENTANGLED_DIR}/common)
