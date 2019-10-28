@@ -4,11 +4,11 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
 
 SRC_URI = " \
-            git://github.com/oopsmonk/entangled.git;branch=cmake_cclient \
+            git://github.com/iotaledger/entangled.git;branch=develop \
             file://0001-add-YOCTO-option-to-CMakeLists.txt.patch \
 "
 
-SRCREV = "ca267a49bad4ce207620b3bdcb3fa0a30a501b67"
+SRCREV = "570b8da680967c4a0f8a054d9c024e2e5d21a991"
 
 DEPENDS = "keccak uthash mbedtls logger http-parser cjson"
 
