@@ -77,4 +77,6 @@ RDEPENDS_${PN}-dev = "bash"
 
 do_install_append(){
     cp -r src/* ${D}${libdir}/go/src/
+
+    find ${D}${libdir}/go/src/ -name ".*" | xargs rm -rf
 }
