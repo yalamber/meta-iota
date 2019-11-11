@@ -34,9 +34,10 @@ SRC_URI = "\
 	   git://github.com/golang/sync.git;protocol=https;name=sync;destsuffix=${PN}-${PV}/src/golang.org/x/sync \
 	   git://github.com/h2non/gock.git;protocol=https;name=gock;destsuffix=${PN}-${PV}/src/gopkg.in/h2non/gock.v1 \
            git://github.com/h2non/parth.git;protocol=https;name=parth;destsuffix=${PN}-${PV}/src/github.com/h2non/parth \
+	   git://github.com/simia-tech/env.git;protocol=https;name=env;destsuffix=${PN}-${PV}/src/github.com/simia-tech/env \
 "
 
-BETA_V = "7"
+BETA_V = "9"
 
 SRCREV_iota.go = "v${PV}-beta.${BETA_V}"
 SRCREV_sys = "81d4e9dc473e5e8c933f2aaeba2a3d81efb9aed2"
@@ -63,6 +64,7 @@ SRCREV_crypto = "38d8ce5564a5b71b2e3a00553993f1b9a7ae852f"
 SRCREV_sync  = "e225da77a7e68af35c70ccbf71af2b83e6acac3c"
 SRCREV_gock = "v1.0.14"
 SRCREV_parth = "v2.0.1"
+SRCREV_env = "v0.1.0"
 
 inherit go
 
