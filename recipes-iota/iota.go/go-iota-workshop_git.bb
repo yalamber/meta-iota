@@ -21,3 +21,4 @@ RDEPENDS_${PN} = "ca-certificates"
 
 inherit go pkgconfig
 GO_IMPORT = "github.com/bernardoaraujor/go-iota-workshop"
+GO_LINKSHARED = ""
