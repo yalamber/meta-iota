@@ -16,7 +16,7 @@ SRCREV_go-iota-workshop = "${AUTOREV}"
 SRCREV_go-spew = "v1.1.1"
 SRCREV_zmq4 = "v1.0.0"
 
-DEPENDS = "iota.go libzmq"
+DEPENDS = "iota.go zeromq"
 RDEPENDS_${PN} = "ca-certificates"
 
 inherit go pkgconfig
