@@ -10,6 +10,8 @@ PR = "r0"
 
 S = "${WORKDIR}/git"
 
+RDEPENDS_${PN}-dev = ""
+
 inherit cmake
 
 do_install_append(){
