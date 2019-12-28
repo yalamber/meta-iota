@@ -13,14 +13,6 @@ S = "${WORKDIR}/git"
 
 DEPENDS = " libmam mbedtls uthash keccak logger"
 
-do_compile(){
-    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_mam_send_msg src/send-msg.c src/common.c -lmam -lcclient -lcommon -lcommon-crypto -lcjson -lkeccak -lmbedtls -lmbedcrypto -lmbedx509 -lhttp_parser -llogger -lpthread
-    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_mam_send_packet src/send-packet.c src/common.c -lmam -lcclient -lcommon -lcommon-crypto -lcjson -lkeccak -lmbedtls -lmbedcrypto -lmbedx509 -lhttp_parser -llogger -lpthread
-    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_mam_send_header src/send-header.c src/common.c -lmam -lcclient -lcommon -lcommon-crypto -lcjson -lkeccak -lmbedtls -lmbedcrypto -lmbedx509 -lhttp_parser -llogger -lpthread
-    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_mam_recv src/recv.c src/common.c -lmam -lcclient -lcommon -lcommon-crypto -lcjson -lkeccak -lmbedtls -lmbedcrypto -lmbedx509 -lhttp_parser -llogger -lpthread
-    ${CC} -I${S} ${CFLAGS} ${LDFLAGS} -o iota_mam_ntru_key_exchange src/ntru-key-exchange.c src/common.c -lmam -lcclient -lcommon -lcommon-crypto -lcjson -lkeccak -lmbedtls -lmbedcrypto -lmbedx509 -lhttp_parser -llogger -lpthread
-}
-
 do_install(){
     install -m 0755 -d ${D}${bindir}
 
