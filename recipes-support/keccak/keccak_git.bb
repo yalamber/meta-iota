@@ -14,6 +14,7 @@ PR = "r0"
 
 S = "${WORKDIR}/git"
 
+RDEPENDS_${PN}-dev = ""
 DEPENDS = "libxslt-native"
 
 do_compile() {
