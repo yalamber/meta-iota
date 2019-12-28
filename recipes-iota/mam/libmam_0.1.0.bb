@@ -21,6 +21,7 @@ SRC_URI = " \
 
 SRCREV = "${AUTOREV}"
 
+RDEPENDS_${PN}-dev = ""
 DEPENDS = "keccak uthash mbedtls logger http-parser cjson"
 
 inherit cmake
