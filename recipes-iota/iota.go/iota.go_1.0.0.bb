@@ -79,6 +79,7 @@ RDEPENDS_${PN}-dev = "bash"
 
 do_install_append(){
     cp -r src/* ${D}${libdir}/go/src/
+    rm -rf ${D}${libdir}/go/src/github.com/dgraph-io/badger/
 
     find ${D}${libdir}/go/src/ -name ".*" | xargs rm -rf
 }
