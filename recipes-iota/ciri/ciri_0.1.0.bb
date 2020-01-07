@@ -18,6 +18,8 @@ SRC_URI = " \
 SRCREV_entangled = "7746ae0f905ae8e54a68869558d14285a2d1aaf7"
 SRCREV_snapshots = "${AUTOREV}"
 
+SRCREV_FORMAT = "entangled_snapshots"
+
 DEPENDS += " bazel-native"
 
 inherit bazel pkgconfig gettext
