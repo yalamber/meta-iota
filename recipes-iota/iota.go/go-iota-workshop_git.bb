@@ -16,6 +16,8 @@ SRCREV_go-iota-workshop = "${AUTOREV}"
 SRCREV_go-spew = "v1.1.1"
 SRCREV_zmq4 = "v1.0.0"
 
+SRCREV_FORMAT = "go-iota-workshop_go-spew-zmq4"
+
 DEPENDS = "iota.go zeromq"
 RDEPENDS_${PN} = "ca-certificates"
 
