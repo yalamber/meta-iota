@@ -146,7 +146,8 @@ SRCREV_go-urn = "v1.2.0"
 # universal-translator deps
 SRCREV_locales = "v0.13.0"
 
-DEPENDS = "iota.go hive.go"
+DEPENDS = "iota.go hive.go bash"
+RDEPENDS_${PN}-dev = "bash"
 #RDEPENDS_${PN} = "ca-certificates"
 
 inherit go pkgconfig
