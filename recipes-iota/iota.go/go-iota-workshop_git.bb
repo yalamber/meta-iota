@@ -4,7 +4,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 # go-iota-workshop repository
-SRC_URI = "git://github.com/bernardoaraujor/go-iota-workshop.git;protocol=https;name=go-iota-workshop;destsuffix=${PN}-${PV}/src/github.com/bernardoaraujor/go-iota-workshop"
+SRC_URI = "git://github.com/iota-community/go-iota-workshop.git;protocol=https;name=go-iota-workshop;destsuffix=${PN}-${PV}/src/github.com/iota-community/go-iota-workshop"
 
 # Go dependencies
 SRC_URI += "\
@@ -20,5 +20,5 @@ DEPENDS = "iota.go zeromq"
 RDEPENDS_${PN} = "ca-certificates"
 
 inherit go pkgconfig
-GO_IMPORT = "github.com/bernardoaraujor/go-iota-workshop"
+GO_IMPORT = "github.com/iota-community/go-iota-workshop"
 GO_LINKSHARED = ""
