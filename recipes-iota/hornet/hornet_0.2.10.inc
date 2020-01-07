@@ -1,5 +1,7 @@
 require hornet-common.inc
 
+DEPENDS += " iota.go hive.go"
+
 # Go dependencies
 SRC_URI += "\
            git://github.com/DataDog/zstd.git;protocol=https;name=zstd;destsuffix=${PN}-${PV}/src/github.com/DataDog/zstd;nobranch=1 \

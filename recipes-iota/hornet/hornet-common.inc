@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/gohornet/hornet.git;protocol=https;name=hornet;dests
 
 SRC_URI += " file://hornet_update_snapshot"
 
-DEPENDS = "iota.go hive.go bash"
+DEPENDS = " bash"
 RDEPENDS_${PN} = "bash"
 RDEPENDS_${PN}-dev = "bash"
 
