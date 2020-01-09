@@ -31,6 +31,8 @@ The meta-iota layer depends on:
 ## Tutorials
 
  - [IOTA cIRI on a BeagleBone Black with Yocto Project and OpenEmbedded](https://medium.com/@bernardoaraujor/iota-ciri-on-a-beaglebone-black-with-yocto-project-and-openembedded-6dd5b1379a60)
+ - [OpenEmbedded, IOTA CClient and a Raspberry Pi](https://medium.com/@bernardoaraujor/openembedded-iota-cclient-and-a-raspberry-pi-5a614549e76)
+ - [IOTA Masked Authenticated Messages on OpenSTLinux of STMicroelectronics Discovery Kit](https://medium.com/@bernardoaraujor/iota-masked-authenticated-messages-on-openstlinux-of-stmicroelectronics-discovery-kit-929d0fd45f7a)
 
 ---
 ## Donations
@@ -39,7 +41,7 @@ If you find meta-iota useful, please consider making a donation:
  - **BTC**: 3NUDRd9hZV2Y8cm6J7u6qmdQVNoWhJrjen
  - **LTC**: LSpyeCjxY28z9VpYjoGJGE8QZLxUL7Rk6c
  - **ETH**: 0x6028475be0b1cf8a566bec7ff4b4f5d28406266e
- - **IOTA**:     SZOYDT9OGQXRIAVIRWXMRMQXI9QJYUU9LVSIXXDTLZTS9EEPJTRIVKNDIIXVXBINWNCOCXQUIYNIPFOFAMKG9PE9NA
+ - **IOTA**: SZOYDT9OGQXRIAVIRWXMRMQXI9QJYUU9LVSIXXDTLZTS9EEPJTRIVKNDIIXVXBINWNCOCXQUIYNIPFOFAMKG9PE9NA
 
 ---
 ## License
