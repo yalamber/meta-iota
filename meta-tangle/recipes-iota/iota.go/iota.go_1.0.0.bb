@@ -80,5 +80,10 @@ RDEPENDS_${PN}-dev = "bash"
 do_install_append(){
     cp -r src/* ${D}${libdir}/go/src/
 
+    # badger and protobuf are conflicting versions with recipes that depend on iota.go
+    # this is a temporary fix,  potentially ideal solution is to have versioned recipes for each dependency
+    rm -rf ${D}${libdir}/go/src/github.com/dgraph-io/badger/
+    rm -rf ${D}${libdir}/go/src/github.com/golang/protobuf/
+
     find ${D}${libdir}/go/src/ -name ".*" | xargs rm -rf
 }
