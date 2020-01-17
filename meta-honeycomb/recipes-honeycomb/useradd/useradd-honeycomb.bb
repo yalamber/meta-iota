@@ -21,7 +21,7 @@ USERADD_PACKAGES = "${PN}"
 # USERADD_PARAM specifies command line options to pass to the 
 # useradd command.
 
-USERADD_PARAM_${PN} = "-u 1200 -d /home/beekeeper -r -s /bin/bash -P 'pollen' beekeeper"
+USERADD_PARAM_${PN} = "-u 1200 -d /home/beekeeper -r -s /bin/bash -P 'pollen2honey' beekeeper"
 
 # GROUPADD_PARAM works the same way, which you set to the options
 # you'd normally pass to the groupadd command.

@@ -4,7 +4,7 @@ You can do that with the following commands:
 $ passwd beekeeper
 $ sudo passwd root
 
-Root's original password is "tangleisawesome", and beekeeper's is "pollen" (both without colons).
+Root's original password is "tangleisawesome", and beekeeper's is "pollen2honey" (both without colons).
 
 Any questions, bugs or feedback, feel free to contact the mantainer Bernardo:
 email: bernardoaraujor@gmail.com
