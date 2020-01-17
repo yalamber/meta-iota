@@ -19,6 +19,7 @@ DISTRO_FEATURES += " \
 
 # general installs
 DISTRO_EXTRA_RDEPENDS = " \
+                        sudo \
                         useradd-honeycomb \
                         wget \
                         curl \
