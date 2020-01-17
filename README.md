@@ -11,22 +11,39 @@ The [**Yocto Project**](https://www.yoctoproject.org/) is an open source collabo
 Together, these projects provides a flexible set of tools and a space where embedded developers worldwide can share technologies, software stacks, configurations, and best practices that can be used to create tailored Linux images for embedded and IoT devices, or anywhere a customized Linux OS is needed. 
 
 The **meta-iota** OpenEmbedded Layer aims to provide recipes for IOTA related programs, tools and libraries in order to support the IOTA Tangle Ledger on a large variety of embedded devices.
- 
+
+The meta-iota layer is actually an umbrella layer that hosts:
+ - meta-tangle: feature layer with recipes for IOTA related programs, tools and libraries for the IOTA Tangle Distributed Ledger.
+ - meta-honeycomb: distro layer with configs and recipes for the IOTA HoneyComb Distribution.
+
 Any collaborations (issues, patches, pull requests, suggestions) are more than welcome: <bernardoaraujor@gmail.com>
 
 ---
 ## Dependencies
 
-The meta-iota layer depends on:
+The meta-tangle layer depends on:
 
 	URI: git://git.openembedded.org/openembedded-core
 	layers: meta
-	branch: warrior, thud
+	branch: warrior, thud, zeus
 
 	URI: git://git.openembedded.org/meta-openembedded
-	layers: meta-oe
-	branch: warrior, thud
+	layers: meta-oe, meta-python, meta-networking
+	branch: warrior, thud, zeus
 	
+The meta-honeycomb layer depends on:
+
+        URI: git://git.openembedded.org/openembedded-core
+        layers: meta
+        branch: warrior, thud, zeus
+
+        URI: git://git.openembedded.org/meta-openembedded
+        layers: meta-oe, meta-python, meta-networking
+        branch: warrior, thud, zeus
+
+        URI: git://github.com/bernardoaraujor/meta-iota
+        layers: meta-tangle
+        branch: master
 ---
 ## Tutorials
 
