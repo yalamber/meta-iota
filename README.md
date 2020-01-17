@@ -33,17 +33,17 @@ The meta-tangle layer depends on:
 	
 The meta-honeycomb layer depends on:
 
-        URI: git://git.openembedded.org/openembedded-core
-        layers: meta
-        branch: warrior, thud, zeus
+	URI: git://git.openembedded.org/openembedded-core
+	layers: meta
+	branch: warrior, thud, zeus
 
-        URI: git://git.openembedded.org/meta-openembedded
-        layers: meta-oe, meta-python, meta-networking
-        branch: warrior, thud, zeus
+	URI: git://git.openembedded.org/meta-openembedded
+	layers: meta-oe, meta-python, meta-networking
+	branch: warrior, thud, zeus
 
-        URI: git://github.com/bernardoaraujor/meta-iota
-        layers: meta-tangle
-        branch: master
+	URI: git://github.com/bernardoaraujor/meta-iota
+	layers: meta-tangle
+	branch: master
 ---
 ## Tutorials
 
