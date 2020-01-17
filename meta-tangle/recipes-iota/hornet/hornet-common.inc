@@ -9,8 +9,8 @@ SRC_URI = "git://github.com/gohornet/hornet.git;protocol=https;name=hornet;dests
 SRC_URI += " file://hornet_update_snapshot"
 
 DEPENDS = " bash"
-RDEPENDS_${PN} = "bash"
-RDEPENDS_${PN}-dev = "bash"
+RDEPENDS_${PN} = "bash sudo"
+RDEPENDS_${PN}-dev = "bash sudo"
 
 inherit go pkgconfig
 GO_IMPORT = "github.com/gohornet/hornet"
