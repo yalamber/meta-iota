@@ -6,8 +6,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/iota-community/python-iota-workshop.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
-RDEPENDS_${PN} = " python3-pyota python3-pyzmq"
-#RDEPENDS_${PN} = "ca-certificates"
+RDEPENDS_${PN} = " python3-pyota python3-pyzmq python3-core"
 
 S = "${WORKDIR}/git"
 
