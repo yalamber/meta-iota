@@ -21,6 +21,7 @@ DISTRO_FEATURES += " \
 DISTRO_EXTRA_RDEPENDS = " \
                         sudo \
                         useradd-honeycomb \
+                        dropbear \
                         wget \
                         curl \
                         git \
