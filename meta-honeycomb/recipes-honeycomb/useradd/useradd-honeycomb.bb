@@ -3,7 +3,10 @@ DESCRIPTION = "User settings for HoneyComb"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
-SRC_URI = "file://README"
+SRC_URI = " \
+            file://README \
+            file://dot.profile \
+"
 
 S = "${WORKDIR}"
 
@@ -32,6 +35,7 @@ do_install () {
 
         install -d -m 755 ${D}/home/beekeeper
 	install -p -m 644 README ${D}/home/beekeeper
+        install -p -m 644 dot.profile ${D}/home/beekeeper/.profile
 
 	# The new users and groups are created before the do_install
 	# step, so you are now free to make use of them:
