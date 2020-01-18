@@ -11,25 +11,6 @@ GOVERSION = "1.13%"
 DISTRO_FEATURES += " \
                    systemd \
                    wifi \
-                   tools-debug \
-                   tools-sdk \
-                   ssh-server-dropbear \
-                   package-management \
-"
-
-# general installs
-DISTRO_EXTRA_RDEPENDS = " \
-                        sudo \
-                        useradd-honeycomb \
-                        dropbear \
-                        wget \
-                        curl \
-                        git \
-                        jq \
-                        nano \
-                        vim \
-                        ca-certificates \
-                        hornet \
 "
 
 VIRTUAL-RUNTIME_init_manager = "systemd"
