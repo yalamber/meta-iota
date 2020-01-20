@@ -1,1 +1,1 @@
-export PATH="/sbin:$PATH"
+export PATH="/sbin:/usr/sbin:$PATH"
