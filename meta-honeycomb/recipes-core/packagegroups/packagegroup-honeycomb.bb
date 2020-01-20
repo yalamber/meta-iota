@@ -8,6 +8,8 @@ PACKAGES = " packagegroup-honeycomb"
 RDEPENDS_packagegroup-honeycomb = " \
                                  sudo \
                                  useradd-honeycomb \
+                                 swapfile \
+                                 util-linux-fallocate \
                                  net-tools \
                                  wpa-supplicant \
                                  openvpn \
