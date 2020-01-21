@@ -1,5 +1,9 @@
 require ${PN}_${PV}.inc
 
+do_compile_prepend(){
+    sed -i 's/000000000\ {/000000000\*0\.95\ {/g' ${S}/src/github.com/gohornet/hornet/packages/profile/profile.go
+}
+
 FILES_${PN} += " ${bin}/hornet_update_snapshot"
 
 do_install_append(){
