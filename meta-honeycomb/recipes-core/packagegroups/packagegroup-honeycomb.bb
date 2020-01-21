@@ -12,6 +12,7 @@ RDEPENDS_packagegroup-honeycomb = " \
                                  util-linux-fallocate \
                                  net-tools \
                                  wpa-supplicant \
+                                 python3 \
                                  openvpn \
                                  wget \
                                  curl \
