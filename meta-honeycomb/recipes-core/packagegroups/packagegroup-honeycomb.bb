@@ -13,6 +13,8 @@ RDEPENDS_packagegroup-honeycomb = " \
                                  net-tools \
                                  wpa-supplicant \
                                  python3 \
+                                 go \
+                                 go-runtime \
                                  openvpn \
                                  wget \
                                  curl \
