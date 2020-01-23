@@ -1,5 +1,5 @@
 #!/bin/bash
 
-SNAPSHOT_DIR=/etc/hornet/snapshot/
+SNAPSHOT_DIR=/var/lib/hornet/
 sudo rm -f $SNAPSHOT_DIR/latest-export.gz.bin
 sudo wget -P $SNAPSHOT_DIR https://dbfiles.iota.org/mainnet/hornet/latest-export.gz.bin
