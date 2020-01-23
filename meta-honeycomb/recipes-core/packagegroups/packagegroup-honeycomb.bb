@@ -9,7 +9,6 @@ RDEPENDS_packagegroup-honeycomb = " \
                                  sudo \
                                  useradd-honeycomb \
                                  swapfile \
-                                 util-linux-fallocate \
                                  net-tools \
                                  wpa-supplicant \
                                  python3 \
@@ -23,6 +22,5 @@ RDEPENDS_packagegroup-honeycomb = " \
                                  nano \
                                  vim \
                                  ca-certificates \
-                                 go \
                                  hornet \
 "
