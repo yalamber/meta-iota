@@ -22,5 +22,6 @@ RDEPENDS_packagegroup-honeycomb = " \
                                  nano \
                                  vim \
                                  ca-certificates \
+                                 expand-rootfs \
                                  hornet \
 "

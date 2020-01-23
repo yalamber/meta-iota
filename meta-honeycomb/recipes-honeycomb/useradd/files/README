@@ -6,6 +6,18 @@ $ sudo passwd root
 
 Root's original password is "tangleisawesome", and beekeeper's is "pollen2honey" (both without colons).
 
+------------------------------------------------------------------------------
+
+It is also recommended that you expand the rootfs so it fills the whole SD card.
+Do it by running:
+$ sudo expand_rootfs
+
+Then reboot the board and and give the resizefs-once script a few minutes to finish expanding the file system.
+
+You can then check the new the file system with 'df -h' once it has run and you should see a size close to the known size of your card.
+
+------------------------------------------------------------------------------
+
 Any questions, bugs or feedback, feel free to contact the mantainer Bernardo:
 email: bernardoaraujor@gmail.com
 discord: bernardoar#8478                                          
