@@ -50,6 +50,7 @@ The meta-honeycomb layer depends on:
  - [IOTA cIRI on a BeagleBone Black with Yocto Project and OpenEmbedded](https://medium.com/@bernardoaraujor/iota-ciri-on-a-beaglebone-black-with-yocto-project-and-openembedded-6dd5b1379a60)
  - [OpenEmbedded, IOTA CClient and a Raspberry Pi](https://medium.com/@bernardoaraujor/openembedded-iota-cclient-and-a-raspberry-pi-5a614549e76)
  - [IOTA Masked Authenticated Messages on OpenSTLinux of STMicroelectronics Discovery Kit](https://medium.com/@bernardoaraujor/iota-masked-authenticated-messages-on-openstlinux-of-stmicroelectronics-discovery-kit-929d0fd45f7a)
+ - [BitBaking honeycombOS](https://github.com/bernardoaraujor/meta-iota/wiki/BitBaking-honeycombOS)
 
 ---
 ## Donations
