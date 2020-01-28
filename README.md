@@ -14,7 +14,7 @@ The **meta-iota** OpenEmbedded Layer aims to provide recipes for IOTA related pr
 
 The meta-iota layer is actually an umbrella layer that hosts:
  - meta-tangle: feature layer with recipes for IOTA related programs, tools and libraries for the IOTA Tangle Distributed Ledger.
- - meta-honeycomb: distro layer with configs and recipes for the IOTA HoneyComb Distribution.
+ - meta-honeycomb: distro layer with configs and recipes for the IOTA honeycombOS Distribution.
 
 Any collaborations (issues, patches, pull requests, suggestions) are more than welcome: <bernardoaraujor@gmail.com>
 
