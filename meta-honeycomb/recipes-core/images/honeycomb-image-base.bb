@@ -10,7 +10,5 @@ IMAGE_FEATURES += " \
                    package-management \
 "
 
-IMAGE_INSTALL += " packagegroup-honeycomb"
-
 # 2GB image size, unless explicitly set otherwise
 IMAGE_ROOTFS_SIZE ?= "2097152"
