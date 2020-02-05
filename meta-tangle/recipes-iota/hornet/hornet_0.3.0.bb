@@ -10,9 +10,15 @@ do_install_append(){
 
     # create hornet directories in /etc
     install -m 0755 -d ${D}${sysconfdir}/hornet
-    install -m 0755 -d ${D}${localstatedir}/lib/hornet
 
-    sed -i 's/\"latest-export.gz.bin\"/\"\/var\/lib\/hornet\/latest-export.gz.bin\"/g' ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config.json
+    # check for distro because useradd-honeycomb.bb already creates these dirs in /var
+    if ["${DISTRO}" != "honeycomb"]; then
+        install -m 0775 -d ${D}${localstatedir}/lib/hornet/snapshot
+        install -m 0775 -d ${D}${localstatedir}/lib/hornet/db
+    fi
+
+    # fix snapshot path on config.json
+    sed -i 's/\"latest-export.gz.bin\"/\"\/var\/lib\/hornet\/snapshot\/latest-export.gz.bin\"/g' ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config.json
 
     # populate config.json and neighbors.json
     install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config.json ${D}${sysconfdir}/hornet
