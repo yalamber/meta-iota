@@ -39,6 +39,21 @@ SRC_URI += " \
         git://github.com/golang/tools.git;protocol=https;name=tools;destsuffix=${PN}-${PV}/src/golang.org/x/tools \
         git://github.com/go-ini/ini.git;protocol=https;name=ini.v1;destsuffix=${PN}-${PV}/src/gopkg.in/ini.v1 \
         git://github.com/go-yaml/yaml.git;protocol=https;name=yaml;destsuffix=${PN}-${PV}/src/gopkg.in/yaml.v2;nobranch=1 \
+        git://github.com/DataDog/zstd.git;protocol=https;name=zstd;destsuffix=${PN}-${PV}/src/github.com/DataDog/zstd;nobranch=1 \
+        git://github.com/cespare/xxhash.git;protocol=https;name=xxhash;destsuffix=${PN}-${PV}/src/github.com/cespare/xxhash \
+        git://github.com/dgraph-io/ristretto.git;protocol=https;name=ristretto;destsuffix=${PN}-${PV}/src/github.com/dgraph-io/ristretto \
+        git://github.com/dustin/go-humanize.git;protocol=https;name=go-humanize;destsuffix=${PN}-${PV}/src/github.com/dustin/go-humanize \
+        git://github.com/fsnotify/fsnotify.git;protocol=https;name=fsnotify;destsuffix=${PN}-${PV}/src/github.com/fsnotify/fsnotify \
+        git://github.com/gobuffalo/here.git;protocol=https;name=here;destsuffix=${PN}-${PV}/src/github.com/gobuffalo/here \
+        git://github.com/golang/snappy.git;protocol=https;name=snappy;destsuffix=${PN}-${PV}/src/github.com/golang/snappy \
+        git://github.com/joho/godotenv.git;protocol=https;name=godotenv;destsuffix=${PN}-${PV}/src/github.com/joho/godotenv \
+        git://github.com/sirupsen/logrus.git;protocol=https;name=logrus;destsuffix=${PN}-${PV}/src/github.com/sirupsen/logrus \
+        git://github.com/valyala/bytebufferpool.git;protocol=https;name=bytebufferpool;destsuffix=${PN}-${PV}/src/github.com/valyala/bytebufferpool \
+        git://github.com/uber-go/multierr.git;protocol=https;name=multierr;destsuffix=${PN}-${PV}/src/go.uber.org/multierr \
+        git://github.com/gobuffalo/packd.git;protocol=https;name=packd;destsuffix=${PN}-${PV}/src/github.com/gobuffalo/packd \
+        git://github.com/hashicorp/hcl.git;protocol=https;name=hcl;destsuffix=${PN}-${PV}/src/github.com/hashicorp/hcl \
+        git://github.com/mitchellh/mapstructure.git;protocol=https;name=mapstructure;destsuffix=${PN}-${PV}/src/github.com/mitchellh/mapstructure \
+        git://github.com/subosito/gotenv.git;protocol=https;name=gotenv;destsuffix=${PN}-${PV}/src/github.com/subosito/gotenv \
 "
 
 SRCREV_goshimmer = "v${PV}"
@@ -81,3 +96,32 @@ SRCREV_text = "v0.3.2"
 SRCREV_tools = "2f3ba24bd6e75104fb11be4edf062de340ffd1ab"
 SRCREV_ini.v1 = "v1.51.1"
 SRCREV_yaml = "v2.2.7"
+
+# badger deps
+SRCREV_zstd = "v1.4.1"
+SRCREV_xxhash = "v1.1.0"
+SRCREV_ristretto = "c1f00be0418e1e647efe10e5f1c3930db33fec98"
+SRCREV_go-humanize = "v1.0.0"
+SRCREV_snappy = "v0.0.1"
+
+# viper deps
+SRCREV_fsnotify = "v1.4.7"
+SRCREV_hcl = "v1.0.0"
+SRCREV_mapstructure = "v1.1.2"
+SRCREV_gotenv = "v1.2.0"
+
+# envy deps
+SRCREV_here = "v0.4.1"
+SRCREV_godotenv = "v1.3.0"
+
+# logger deps
+SRCREV_logrus = "v1.4.2"
+
+# fasttemplate deps
+SRCREV_bytebufferpool = "v1.0.0"
+
+# zap deps
+SRCREV_multierr = "v1.3.0"
+
+# packr deps
+SRCREV_packd = "v0.3.0"
