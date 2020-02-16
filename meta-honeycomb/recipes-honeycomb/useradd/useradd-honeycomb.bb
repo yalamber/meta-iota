@@ -40,6 +40,8 @@ do_install () {
         install -d -m 775 ${D}${localstatedir}/lib/hornet/snapshot
         install -d -m 775 ${D}${localstatedir}/lib/hornet/db
 
+        install -d -m 775 ${D}${localstatedir}/lib/goshimmer/db
+
 	# The new users and groups are created before the do_install
 	# step, so you are now free to make use of them:
 	chown -R beekeeper ${D}${datadir}/beekeeper
@@ -48,6 +50,7 @@ do_install () {
 	chgrp -R iota ${D}${datadir}/beekeeper
 	chgrp -R iota ${D}/home/beekeeper
         chgrp -R iota ${D}${localstatedir}/lib/hornet/
+        chgrp -R iota ${D}${localstatedir}/lib/goshimmer/
 }
 
 FILES_${PN} = "${exec_prefix}/* /home/* ${localstatedir}"
