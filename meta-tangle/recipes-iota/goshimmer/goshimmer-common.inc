@@ -6,10 +6,6 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7ca
 
 SRC_URI = "git://github.com/iotaledger/goshimmer.git;protocol=https;name=goshimmer;destsuffix=${PN}-${PV}/src/github.com/iotaledger/goshimmer"
 
-#DEPENDS = " bash"
-#RDEPENDS_${PN} = "bash sudo"
-#RDEPENDS_${PN}-dev = "bash sudo"
-
 inherit go pkgconfig
 GO_IMPORT = "github.com/iotaledger/goshimmer"
 GO_LINKSHARED = ""
