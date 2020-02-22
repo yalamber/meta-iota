@@ -12,6 +12,11 @@ SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "goshimmer.service"
 SYSTEMD_AUTO_ENABLE = "disable"
 
+# simple fix to cli parser, hacky approach because golang patches are not trivial
+do_compile_prepend(){
+    sed -i '39 a flag.Parse()' ${S}/src/github.com/iotaledger/goshimmer/packages/parameter/parameter.go
+}
+
 do_install_append(){
 
     # create goshimmer directory in /etc
