@@ -11,6 +11,10 @@ RDEPENDS_${PN} = " parted e2fsprogs-resize2fs lsb util-linux"
 
 S = "${WORKDIR}"
 
+do_install_prepend_rock64 (){
+	sed -i 's/mmcblk0/mmcblk1/g' ${S}/expand_rootfs
+}
+
 do_install () {
 	install -d -m 755 ${D}${bindir}
         install -m 644 ${S}/expand_rootfs ${D}${bindir}
