@@ -17,6 +17,8 @@ RDEPENDS_packagegroup-honeycomb-misc = " \
                                        expand-rootfs \
                                        screen \
                                        tmux \
+                                       cronie \
+                                       man-db \
 "
 
 RDEPENDS_packagegroup-honeycomb-networking = " \
