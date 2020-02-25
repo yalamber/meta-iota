@@ -33,7 +33,6 @@ SRC_URI += " \
         git://github.com/spf13/jwalterweatherman.git;protocol=https;name=jwalterweatherman;destsuffix=${PN}-${PV}/src/github.com/spf13/jwalterweatherman \
         git://github.com/spf13/pflag.git;protocol=https;name=pflag;destsuffix=${PN}-${PV}/src/github.com/spf13/pflag \
         git://github.com/spf13/viper.git;protocol=https;name=viper;destsuffix=${PN}-${PV}/src/github.com/spf13/viper \
-        git://github.com/stretchr/objx.git;protocol=https;name=objx;destsuffix=${PN}-${PV}/src/github.com/stretchr/objx \
         git://github.com/stretchr/testify.git;protocol=https;name=testify;destsuffix=${PN}-${PV}/src/github.com/stretchr/testify \
         git://github.com/valyala/fasttemplate.git;protocol=https;name=fasttemplate;destsuffix=${PN}-${PV}/src/github.com/valyala/fasttemplate \
         git://github.com/uber-go/atomic.git;protocol=https;name=atomic;destsuffix=${PN}-${PV}/src/go.uber.org/atomic \
@@ -41,7 +40,7 @@ SRC_URI += " \
         git://github.com/golang/crypto.git;protocol=https;name=crypto;destsuffix=${PN}-${PV}/src/golang.org/x/crypto \
         git://github.com/golang/net.git;protocol=https;name=net;destsuffix=${PN}-${PV}/src/golang.org/x/net \
         git://github.com/golang/sys.git;protocol=https;name=sys;destsuffix=${PN}-${PV}/src/golang.org/x/sys \
-        git://github.com/golang/text.git;protocol=https;name=text;destsuffix=${PN}-${PV}/src/golang.org/x/text \
+	git://github.com/golang/text.git;protocol=https;name=text;destsuffix=${PN}-${PV}/src/golang.org/x/text \
         git://github.com/golang/tools.git;protocol=https;name=tools;destsuffix=${PN}-${PV}/src/golang.org/x/tools \
         git://github.com/go-ini/ini.git;protocol=https;name=ini.v1;destsuffix=${PN}-${PV}/src/gopkg.in/ini.v1 \
 	git://github.com/src-d/go-git.git;protocol=https;name=go-git;destsuffix=${PN}-${PV}/src/gopkg.in/src-d/go-git.v4 \
@@ -84,7 +83,7 @@ SRCREV_protobuf = "v1.3.2"
 SRCREV_go-engine.io = "798118fc0dd23e33a0e71a1f639f56c7dd74a172"
 SRCREV_go-socket.io = "683f8725b6d08c272efcc5682bfd86e0a70d8123"
 SRCREV_websocket = "v1.4.1"
-SRCREV_hive.go = "27b18f10f09ed800c8ed20569fed90d08bc43fea"
+SRCREV_hive.go = "2d5f5238c0de9a92533e849d7ffe41d393cba53f"
 SRCREV_iota.go = "v1.0.0-beta.14"
 SRCREV_pretty = "v0.2.0"
 SRCREV_krtext = "v0.2.0"
@@ -105,14 +104,13 @@ SRCREV_cast = "v1.3.1"
 SRCREV_jwalterweatherman = "v1.1.0"
 SRCREV_pflag = "v1.0.5"
 SRCREV_viper = "v1.6.1"
-SRCREV_objx = "v0.2.0"
 SRCREV_testify = "v1.4.0"
 SRCREV_fasttemplate = "v1.1.0"
 SRCREV_atomic = "v1.5.1"
 SRCREV_zap = "v1.13.0"
-SRCREV_crypto = "69ecbb4d6d5dab05e49161c6e77ea40a030884e1"
-SRCREV_net = "c0dbc17a35534bf2e581d7a942408dc936316da4"
-SRCREV_sys = "9fbb57f87de9ccfe3a99d4e3270ce8a926ebba4f"
+SRCREV_crypto = "1d94cc7ab1c630336ab82ccb9c9cda72a875c382"
+SRCREV_net = "16171245cfb220d5317888b716d69c1fb4e7992b"
+SRCREV_sys = "12a6c2dcc1e4cb348b57847c73987099e261714b"
 SRCREV_text = "v0.3.2"
 SRCREV_tools = "2f3ba24bd6e75104fb11be4edf062de340ffd1ab"
 SRCREV_ini.v1 = "v1.51.1"
