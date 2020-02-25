@@ -61,6 +61,14 @@ SRC_URI += " \
         git://github.com/hashicorp/hcl.git;protocol=https;name=hcl;destsuffix=${PN}-${PV}/src/github.com/hashicorp/hcl \
         git://github.com/mitchellh/mapstructure.git;protocol=https;name=mapstructure;destsuffix=${PN}-${PV}/src/github.com/mitchellh/mapstructure \
         git://github.com/subosito/gotenv.git;protocol=https;name=gotenv;destsuffix=${PN}-${PV}/src/github.com/subosito/gotenv \
+	git://github.com/emirpasic/gods.git;protocol=https;name=gods;destsuffix=${PN}-${PV}/src/github.com/emirpasic/gods \
+	git://github.com/jbenet/go-context.git;protocol=https;name=go-context;destsuffix=${PN}-${PV}/src/github.com/jbenet/go-context \
+	git://github.com/kevinburke/ssh_config.git;protocol=https;name=ssh_config;destsuffix=${PN}-${PV}/src/github.com/kevinburke/ssh_config \
+	git://github.com/mitchellh/go-homedir.git;protocol=https;name=go-homedir;destsuffix=${PN}-${PV}/src/github.com/mitchellh/go-homedir \
+	git://github.com/src-d/gcfg.git;protocol=https;name=gcfg;destsuffix=${PN}-${PV}/src/github.com/src-d/gcfg;nobranch=1 \
+	git://github.com/xanzy/ssh-agent.git;protocol=https;name=ssh-agent;destsuffix=${PN}-${PV}/src/github.com/xanzy/ssh-agent \
+	git://github.com/src-d/go-billy.git;protocol=https;name=go-billy;destsuffix=${PN}-${PV}/src/gopkg.in/src-d/go-billy.v4 \
+	git://github.com/go-warnings/warnings.git;protocol=https;name=warnings;destsuffix=${PN}-${PV}/src/gopkg.in/warnings.v0 \
 "
 
 SRCREV_goshimmer = "v${PV}"
@@ -139,3 +147,15 @@ SRCREV_multierr = "v1.3.0"
 
 # packr deps
 SRCREV_packd = "v0.3.0"
+
+# go-git deps
+SRCREV_gods = "v1.12.0"
+SRCREV_go-context = "d14ea06fba99483203c19d92cfcd13ebe73135f4"
+SRCREV_ssh_config = "01f96b0aa0cdcaa93f9495f89bbc6cb5a992ce6e"
+SRCREV_go-homedir = "v1.1.0"
+SRCREV_gcfg = "v1.4.0"
+SRCREV_ssh-agent = "v0.2.1"
+SRCREV_go-billy = "v4.3.2"
+
+# gcfg deps
+SRCREV_warnings = "v0.1.2"
