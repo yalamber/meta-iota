@@ -12,6 +12,16 @@ SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "goshimmer.service"
 SYSTEMD_AUTO_ENABLE = "disable"
 
+# avoid tests
+PTEST_ENABLED="0"
+
+do_compile_prepend(){
+
+    # avoid tests
+    rm -rf ${S}/src/github.com/iotaledger/goshimmer/packages/binary/tangle/model/transaction/test
+}
+
+
 do_install_append(){
 
     # create goshimmer directory in /etc
