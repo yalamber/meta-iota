@@ -8,6 +8,7 @@ IMAGE_FEATURES += " \
                    tools-sdk \
                    ssh-server-dropbear \
                    package-management \
+                   doc-pkgs \
 "
 
 # 2GB image size, unless explicitly set otherwise
