@@ -19,6 +19,7 @@ RDEPENDS_packagegroup-honeycomb-misc = " \
                                        tmux \
                                        cronie \
                                        man-db \
+                                       htop \
 "
 
 RDEPENDS_packagegroup-honeycomb-networking = " \
