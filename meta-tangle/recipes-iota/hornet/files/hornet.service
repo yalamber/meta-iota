@@ -1,0 +1,23 @@
+[Unit]
+Description=HORNET Fullnode
+BindsTo=network-online.target
+After=network-online.target
+
+[Service]
+WorkingDirectory=/var/lib/hornet/db
+User=beekeeper
+SyslogIdentifier=HORNET
+LimitNOFILE=4096
+StandardOutput=syslog
+StandardError=syslog
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+KillSignal=SIGTERM
+TimeoutSec=1200
+Restart=always
+ExecStart=hornet_start
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+[Unit]
+Description=GoShimmer FullNode
+BindsTo=network-online.target
+After=network-online.target
+
+[Service]
+WorkingDirectory=/var/lib/goshimmer/db
+User=beekeeper
+SyslogIdentifier=GoShimmer
+LimitNOFILE=4096
+StandardOutput=syslog
+StandardError=syslog
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+KillSignal=SIGTERM
+TimeoutSec=1200
+Restart=always
+ExecStart=/usr/bin/goshimmer -d /etc/goshimmer
+
+[Install]
+WantedBy=multi-user.target

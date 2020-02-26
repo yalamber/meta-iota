@@ -24,7 +24,7 @@ USERADD_PACKAGES = "${PN}"
 # USERADD_PARAM specifies command line options to pass to the 
 # useradd command.
 
-USERADD_PARAM_${PN} = "-u 1200 -d /home/beekeeper -r -s /bin/bash -P 'pollen2honey' beekeeper"
+USERADD_PARAM_${PN} = "-u 1200 -d /home/beekeeper -r -s /bin/bash -P 'pollen2honey' -g iota beekeeper"
 
 # GROUPADD_PARAM works the same way, which you set to the options
 # you'd normally pass to the groupadd command.
@@ -37,6 +37,11 @@ do_install () {
 	install -p -m 644 README ${D}/home/beekeeper
         install -p -m 644 dot.profile ${D}/home/beekeeper/.profile
 
+        install -d -m 775 ${D}${localstatedir}/lib/hornet/snapshot
+        install -d -m 775 ${D}${localstatedir}/lib/hornet/db
+
+        install -d -m 775 ${D}${localstatedir}/lib/goshimmer/db
+
 	# The new users and groups are created before the do_install
 	# step, so you are now free to make use of them:
 	chown -R beekeeper ${D}${datadir}/beekeeper
@@ -44,9 +49,11 @@ do_install () {
 
 	chgrp -R iota ${D}${datadir}/beekeeper
 	chgrp -R iota ${D}/home/beekeeper
+        chgrp -R iota ${D}${localstatedir}/lib/hornet/
+        chgrp -R iota ${D}${localstatedir}/lib/goshimmer/
 }
 
-FILES_${PN} = "${exec_prefix}/* /home/*"
+FILES_${PN} = "${exec_prefix}/* /home/* ${localstatedir}"
 
 # Prevents do_package failures with:
 # debugsources.list: No such file or directory:

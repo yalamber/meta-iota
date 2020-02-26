@@ -1,5 +1,8 @@
 #!/bin/bash
 
-SNAPSHOT_DIR=/var/lib/hornet/
-sudo rm -f $SNAPSHOT_DIR/latest-export.gz.bin
-sudo wget -P $SNAPSHOT_DIR https://dbfiles.iota.org/mainnet/hornet/latest-export.gz.bin
+SNAPSHOT_DIR=/var/lib/hornet/snapshot
+echo "Removing current local snapshot."
+rm -f $SNAPSHOT_DIR/latest-export.gz.bin
+
+echo "Downloading latest snapshot."
+wget -P $SNAPSHOT_DIR https://ls.manapotion.io/latest-export.gz.bin

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+hornet_update_snapshot
+/usr/bin/hornet -d /etc/hornet

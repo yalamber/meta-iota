@@ -6,7 +6,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7ca
 
 SRC_URI = "git://github.com/gohornet/hornet.git;protocol=https;name=hornet;destsuffix=${PN}-${PV}/src/github.com/gohornet/hornet"
 
-SRC_URI += " file://hornet_update_snapshot"
+SRC_URI += " \
+           file://hornet_update_snapshot \
+           file://hornet_start \
+"
 
 DEPENDS = " bash"
 RDEPENDS_${PN} = "bash sudo"
