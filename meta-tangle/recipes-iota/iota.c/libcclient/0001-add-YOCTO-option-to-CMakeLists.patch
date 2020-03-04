@@ -1,0 +1,97 @@
+From 6776d9a0b9b0a631dded4a00d133212143f55e6b Mon Sep 17 00:00:00 2001
+From: "Bernardo A. Rodrigues" <bernardo.araujo@iota.org>
+Date: Wed, 4 Mar 2020 17:23:50 +0100
+Subject: [PATCH] add-YOCTO-option-to-CMakeLists
+
+---
+ CMakeLists.txt | 63 ++++++++++++++++++++++++++++++++--------------------------
+ 1 file changed, 35 insertions(+), 28 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2cb047a..bdb85c9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,33 +15,38 @@ enable_language(C)
+ enable_testing()
+ 
+ option(CCLIENT_TEST "Enable CClient library test cases" OFF)
++option (YOCTO "Enable Building in Yocto" OFF)
+ 
+-# fetch iota_common
+-include(FetchContent)
+-FetchContent_Declare(
+-  iota_common
+-  GIT_REPOSITORY http://github.com/iotaledger/iota_common.git
+-  GIT_TAG 82818daf1ffa31b0f8a247ec51eee5cf68cb79ab
+-)
++if(NOT YOCTO)
+ 
+-if(${CMAKE_VERSION} VERSION_LESS 3.14)
+-    macro(FetchContent_MakeAvailable NAME)
+-        FetchContent_GetProperties(${NAME})
+-        if(NOT ${NAME}_POPULATED)
+-            FetchContent_Populate(${NAME})
+-            add_subdirectory(${${NAME}_SOURCE_DIR} ${${NAME}_BINARY_DIR})
+-        endif()
+-    endmacro()
+-endif()
++  # fetch iota_common
++  include(FetchContent)
++    FetchContent_Declare(
++    iota_common
++    GIT_REPOSITORY http://github.com/iotaledger/iota_common.git
++    GIT_TAG 82818daf1ffa31b0f8a247ec51eee5cf68cb79ab
++  )
+ 
+-message(STATUS "Fetching iota_common")
+-FetchContent_MakeAvailable(iota_common)
++  if(${CMAKE_VERSION} VERSION_LESS 3.14)
++      macro(FetchContent_MakeAvailable NAME)
++          FetchContent_GetProperties(${NAME})
++          if(NOT ${NAME}_POPULATED)
++              FetchContent_Populate(${NAME})
++              add_subdirectory(${${NAME}_SOURCE_DIR} ${${NAME}_BINARY_DIR})
++          endif()
++      endmacro()
++  endif()
++
++  message(STATUS "Fetching iota_common")
++  FetchContent_MakeAvailable(iota_common)
++
++  # fetch external libs
++  include(ExternalProject)
++  include(cmake/cjson.cmake)
++  include(cmake/http_parser.cmake)
++  include(cmake/mbedtls.cmake)
+ 
+-# fetch external libs
+-include(ExternalProject)
+-include(cmake/cjson.cmake)
+-include(cmake/http_parser.cmake)
+-include(cmake/mbedtls.cmake)
++endif()
+ 
+ # libs in the sandbox
+ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
+@@ -168,11 +173,13 @@ add_library(cclient
+   ${JSON_SERIALIZER_SRC}
+ )
+ 
+-add_dependencies(cclient
+-  "ext_cjson"
+-  "ext_http_parser"
+-  "ext_mbedtls"
+-  )
++if(NOT YOCTO)
++  add_dependencies(cclient
++    "ext_cjson"
++    "ext_http_parser"
++    "ext_mbedtls"
++    )
++endif()
+ 
+ target_include_directories(cclient PUBLIC 
+   "${PROJECT_SOURCE_DIR}"
+-- 
+2.7.4
+
