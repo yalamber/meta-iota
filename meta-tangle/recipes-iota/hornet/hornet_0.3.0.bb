@@ -2,6 +2,8 @@ require ${PN}_${PV}.inc
 
 inherit systemd
 
+RDEPENDS_${PN} = " wget systemd bash"
+
 SRC_URI += " \
            file://hornet.service \
 "
