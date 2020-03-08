@@ -1,8 +1,8 @@
 require conf/distro/poky.conf
 
 DISTRO = "honeycomb"
-DISTRO_NAME = "IOTA HoneyComb"
-DISTRO_VERSION = "0.1.0"
+DISTRO_NAME = "IOTA honeycombOS"
+DISTRO_VERSION = "0.1.1"
 
 MAINTAINER = "Bernardo A. Rodrigues <bernardoaraujor@gmail.com>"
 
