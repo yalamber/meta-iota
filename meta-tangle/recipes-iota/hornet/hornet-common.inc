@@ -8,7 +8,6 @@ SRC_URI = "git://github.com/gohornet/hornet.git;protocol=https;name=hornet;dests
 
 SRC_URI += " \
            file://hornet_update_snapshot \
-           file://hornet_start \
 "
 
 DEPENDS = " bash"

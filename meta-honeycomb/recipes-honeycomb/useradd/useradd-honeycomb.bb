@@ -37,8 +37,7 @@ do_install () {
 	install -p -m 644 README ${D}/home/beekeeper
         install -p -m 644 dot.profile ${D}/home/beekeeper/.profile
 
-        install -d -m 775 ${D}${localstatedir}/lib/hornet/snapshot
-        install -d -m 775 ${D}${localstatedir}/lib/hornet/db
+        install -d -m 775 ${D}${localstatedir}/lib/hornet
 
         install -d -m 775 ${D}${localstatedir}/lib/goshimmer/db
 
