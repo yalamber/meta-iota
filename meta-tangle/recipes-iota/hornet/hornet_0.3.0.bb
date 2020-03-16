@@ -19,6 +19,9 @@ SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "hornet.service"
 SYSTEMD_AUTO_ENABLE = "disable"
 
+# avoid cache disabling
+export GOCACHE = "${B}/.cache"
+
 do_compile_prepend(){
     sed -i 's/000000000\ {/000000000\*0\.95\ {/g' ${S}/src/github.com/gohornet/hornet/packages/profile/profile.go
 }

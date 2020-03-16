@@ -15,6 +15,9 @@ SYSTEMD_AUTO_ENABLE = "disable"
 # avoid tests
 PTEST_ENABLED="0"
 
+# avoid cache disabling
+export GOCACHE = "${B}/.cache"
+
 do_compile_prepend(){
 
     # avoid tests
