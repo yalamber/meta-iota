@@ -15,13 +15,6 @@ DISTRO_FEATURES += " \
 
 VIRTUAL-RUNTIME_init_manager = "systemd"
 
-DISTRO_EXTRA_RDEPENDS += "\
-                          packagegroup-honeycomb-misc \
-                          packagegroup-honeycomb-networking \
-                          packagegroup-honeycomb-development \
-                          packagegroup-honeycomb-iota \
-"
-
 PACKAGE_CLASSES = "package_deb"
 
 INHERIT += "extrausers"
