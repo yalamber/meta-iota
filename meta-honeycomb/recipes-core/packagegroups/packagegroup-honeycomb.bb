@@ -12,7 +12,7 @@ PACKAGES = " \
 
 RDEPENDS_packagegroup-honeycomb-misc = " \
                                        sudo \
-                                       useradd-honeycomb \
+                                       useradd-beekeeper \
                                        swapfile \
                                        expand-rootfs \
                                        screen \
@@ -51,4 +51,6 @@ RDEPENDS_packagegroup-honeycomb-development += " \
 RDEPENDS_packagegroup-honeycomb-iota = " \
                                        hornet \
                                        goshimmer \
+                                       libcclient \
+                                       libcommon \
 "

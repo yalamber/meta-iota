@@ -36,11 +36,6 @@ do_install_append(){
     # remote dashboard enabled by default
     sed -i 's/127.0.0.1/0.0.0.0/g' ${D}${sysconfdir}/goshimmer/config.json
 
-    # check for distro because useradd-honeycomb.bb already creates these dir in /var
-    if ["${DISTRO}" != "honeycomb"]; then
-        install -m 0775 -d ${D}${localstatedir}/lib/goshimmer/db
-    fi
-
     # create systemd directory
     install -m 0755 -d ${D}${systemd_system_unitdir}
 

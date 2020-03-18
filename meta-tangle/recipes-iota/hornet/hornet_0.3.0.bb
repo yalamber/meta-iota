@@ -34,11 +34,6 @@ do_install_append(){
     install -m 0755 -d ${D}${sysconfdir}/hornet
     install -m 0755 -d ${D}${sysconfdir}/default
 
-    # check for distro because useradd-honeycomb.bb already creates these dirs in /var
-    if ["${DISTRO}" != "honeycomb"]; then
-        install -m 0775 -d ${D}${localstatedir}/lib/hornet
-    fi
-
     # create systemd directory
     install -m 0755 -d ${D}${systemd_system_unitdir}
 
