@@ -12,7 +12,7 @@ PACKAGES = " \
 
 RDEPENDS_packagegroup-honeycomb-misc = " \
                                        sudo \
-                                       useradd-honeycomb \
+                                       useradd-beekeeper \
                                        swapfile \
                                        expand-rootfs \
                                        screen \

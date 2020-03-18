@@ -23,12 +23,6 @@ do_install_append(){
     # create hornet directories in /etc
     install -m 0755 -d ${D}${sysconfdir}/hornet
 
-    # check for distro because useradd-honeycomb.bb already creates these dirs in /var
-    if ["${DISTRO}" != "honeycomb"]; then
-        install -m 0775 -d ${D}${localstatedir}/lib/hornet/snapshot
-        install -m 0775 -d ${D}${localstatedir}/lib/hornet/db
-    fi
-
     # create systemd directory
     install -m 0755 -d ${D}${systemd_system_unitdir}
 

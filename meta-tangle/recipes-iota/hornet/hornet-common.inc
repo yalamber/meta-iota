@@ -11,7 +11,7 @@ SRC_URI += " \
            file://hornet_start \
 "
 
-DEPENDS = " bash"
+DEPENDS = " bash useradd-beekeeper"
 RDEPENDS_${PN} = "bash sudo"
 RDEPENDS_${PN}-dev = "bash sudo"
 

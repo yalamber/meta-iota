@@ -10,3 +10,4 @@ inherit go pkgconfig
 GO_IMPORT = "github.com/iotaledger/goshimmer"
 GO_LINKSHARED = ""
 
+DEPENDS = "useradd-beekeeper"

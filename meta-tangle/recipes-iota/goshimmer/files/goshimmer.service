@@ -4,7 +4,7 @@ BindsTo=network-online.target
 After=network-online.target
 
 [Service]
-WorkingDirectory=/var/lib/goshimmer/db
+WorkingDirectory=/var/lib/goshimmer
 User=beekeeper
 SyslogIdentifier=GoShimmer
 LimitNOFILE=4096
