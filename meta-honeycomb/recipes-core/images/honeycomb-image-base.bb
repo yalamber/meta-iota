@@ -11,5 +11,12 @@ IMAGE_FEATURES += " \
                    doc-pkgs \
 "
 
+IMAGE_INSTALL_append += "\
+                          packagegroup-honeycomb-misc \
+                          packagegroup-honeycomb-networking \
+                          packagegroup-honeycomb-development \
+                          packagegroup-honeycomb-iota \
+"
+
 # 2GB image size, unless explicitly set otherwise
 IMAGE_ROOTFS_SIZE ?= "2097152"
