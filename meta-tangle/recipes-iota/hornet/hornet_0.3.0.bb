@@ -68,18 +68,15 @@ if type systemctl >/dev/null 2>/dev/null; then
 		systemctl daemon-reload
 	fi
 
-	# check if beekeeper exists
-	getent passwd beekeeper > /dev/null 2&>1
-
-	# if beekeeper doesn't exist, create it
-	if [ $? -eq 1 ]; then
-		useradd beekeeper
+	# if hornet user doesn't exist, create it
+	if [ ! $(getent passwd hornet) ]; then
+		useradd --no-create-home --system hornet > /dev/null
 	fi
 
 	# if /var/lib/hornet doesn't exist, create it
 	if [ ! -d /var/lib/hornet ]; then
 		mkdir -p /var/lib/hornet/snapshot
-		chown -R beekeeper:iota /var/lib/hornet
+		chown -R hornet:hornet /var/lib/hornet
 	fi
 
 	systemctl $OPTS disable hornet.service
@@ -105,6 +102,7 @@ remove)
     ;;
 purge)
     rm -rf /var/lib/hornet
+    deluser hornet >/dev/null
     ;;
 upgrade | failed-upgrade | abort-install | abort-upgrade | disappear) ;;
 

@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 EnvironmentFile=-/etc/default/hornet
 WorkingDirectory=/var/lib/hornet
-User=beekeeper
+User=hornet
 SyslogIdentifier=hornet
 LimitNOFILE=4096
 StandardOutput=syslog
