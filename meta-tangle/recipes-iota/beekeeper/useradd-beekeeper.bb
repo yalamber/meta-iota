@@ -27,20 +27,13 @@ do_install () {
 	install -p -m 644 README ${D}/home/beekeeper
         install -p -m 644 dot.profile ${D}/home/beekeeper/.profile
 
-        install -d -m 775 ${D}${localstatedir}/lib/hornet
-        install -d -m 775 ${D}${localstatedir}/lib/goshimmer
-
-	# The new users and groups are created before the do_install
-	# step, so you are now free to make use of them:
 	chown -R beekeeper ${D}${datadir}/beekeeper
 	chown -R beekeeper ${D}/home/beekeeper
 
 	chgrp -R iota ${D}${datadir}/beekeeper
 	chgrp -R iota ${D}/home/beekeeper
-        chgrp -R iota ${D}${localstatedir}/lib/hornet/
-        chgrp -R iota ${D}${localstatedir}/lib/goshimmer/
 }
 
-FILES_${PN} = "${exec_prefix}/* /home/* ${localstatedir}"
+FILES_${PN} = "${exec_prefix}/* /home/*"
 
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
