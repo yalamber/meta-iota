@@ -105,8 +105,6 @@ remove)
     ;;
 purge)
     rm -rf /var/lib/hornet
-    rm /etc/default/hornet
-    deluser hornet >/dev/null
     ;;
 upgrade | failed-upgrade | abort-install | abort-upgrade | disappear) ;;
 
