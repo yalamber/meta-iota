@@ -38,3 +38,65 @@ do_install_append(){
     # populate systemd service file
     install -m 0755 ${WORKDIR}/goshimmer.service ${D}${systemd_system_unitdir}
 }
+
+pkg_postinst_ontarget_${PN}(){
+OPTS=""
+
+if [ -n "$D" ]; then
+    OPTS="--root=$D"
+fi
+
+if type systemctl >/dev/null 2>/dev/null; then
+	if [ -z "$D" ]; then
+		systemctl daemon-reload
+	fi
+
+        # if iota group doesn't exist, create it
+        if [ ! $(getent group iota) ]; then
+                groupadd iota > /dev/null
+        fi
+
+	# if beekeeper user doesn't exist, create it
+	if [ ! $(getent passwd beekeeper) ]; then
+		useradd --no-create-home --system -g iota beekeeper > /dev/null
+	fi
+
+	# if /var/lib/goshimmer doesn't exist, create it
+	if [ ! -d /var/lib/goshimmer ]; then
+		mkdir -p /var/lib/goshimmer
+		chown -R beekeeper:iota /var/lib/goshimmer
+	fi
+
+	systemctl $OPTS disable goshimmer.service
+
+	if [ -z "$D" -a "disable" = "enable" ]; then
+		systemctl --no-block restart goshimmer.service
+	fi
+fi
+}
+
+pkg_postrm_${PN}(){
+OPTS=""
+
+if [ -n "$D" ]; then
+    OPTS="--root=$D"
+fi
+
+systemctl --system daemon-reload >/dev/null || true
+
+case "$1" in
+remove)
+    rm -rf /var/lib/goshimmer/*
+    rm -rf /etc/goshimmer/*
+    ;;
+purge)
+    rm -rf /var/lib/goshimmer
+    ;;
+upgrade | failed-upgrade | abort-install | abort-upgrade | disappear) ;;
+
+*)
+    echo "postrm called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+}
