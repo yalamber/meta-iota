@@ -8,6 +8,8 @@ SRC_URI += " \
 
 FILES_${PN} += " goshimmer.service"
 
+CONFFILES_${PN} = "${sysconfdir}/goshimmer/config.json"
+
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "goshimmer.service"
 SYSTEMD_AUTO_ENABLE = "disable"
