@@ -67,8 +67,7 @@ if type systemctl >/dev/null 2>/dev/null; then
 
 	# if /var/lib/hornet doesn't exist, create it
 	if [ ! -d /var/lib/hornet ]; then
-		mkdir -p /var/lib/hornet/db
-		mkdir -p /var/lib/hornet/snapshot
+		mkdir -p /var/lib/hornet
 		chown -R hornet:hornet /var/lib/hornet
 	fi
 

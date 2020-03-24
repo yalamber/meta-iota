@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SNAPSHOT_DIR=/var/lib/hornet/snapshot
+SNAPSHOT_DIR=/var/lib/hornet
 
 # Set default if none set.
 REMOTE_FILE="${1:-https://dbfiles.iota.org/mainnet/hornet/latest-export.gz.bin}"

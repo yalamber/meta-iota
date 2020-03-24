@@ -41,9 +41,6 @@ do_install_append(){
     install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config.json ${D}${sysconfdir}/hornet
     install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/neighbors.json ${D}${sysconfdir}/hornet
 
-    # fix snapshot path
-    sed -i 's/\"latest-export.gz.bin\"/\"\/var\/lib\/hornet\/snapshot\/latest-export.gz.bin\"/g' ${D}${sysconfdir}/hornet/config.json
-
     # populate update_snapshot script
     install -m 0755 ${WORKDIR}/hornet_update_snapshot ${D}${bindir}
 
@@ -75,7 +72,7 @@ if type systemctl >/dev/null 2>/dev/null; then
 
 	# if /var/lib/hornet doesn't exist, create it
 	if [ ! -d /var/lib/hornet ]; then
-		mkdir -p /var/lib/hornet/snapshot
+		mkdir -p /var/lib/hornet
 		chown -R hornet:hornet /var/lib/hornet
 	fi
 
