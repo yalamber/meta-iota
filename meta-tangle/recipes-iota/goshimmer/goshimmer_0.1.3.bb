@@ -51,20 +51,15 @@ if type systemctl >/dev/null 2>/dev/null; then
 		systemctl daemon-reload
 	fi
 
-        # if iota group doesn't exist, create it
-        if [ ! $(getent group iota) ]; then
-                groupadd iota > /dev/null
-        fi
-
-	# if beekeeper user doesn't exist, create it
-	if [ ! $(getent passwd beekeeper) ]; then
-		useradd --no-create-home --system -g iota beekeeper > /dev/null
+	# if goshimmer user doesn't exist, create it
+	if [ ! $(getent passwd goshimmer) ]; then
+		useradd --no-create-home --system goshimmer > /dev/null
 	fi
 
 	# if /var/lib/goshimmer doesn't exist, create it
 	if [ ! -d /var/lib/goshimmer ]; then
 		mkdir -p /var/lib/goshimmer
-		chown -R beekeeper:iota /var/lib/goshimmer
+		chown -R goshimmer:goshimmer /var/lib/goshimmer
 	fi
 
 	systemctl $OPTS disable goshimmer.service
