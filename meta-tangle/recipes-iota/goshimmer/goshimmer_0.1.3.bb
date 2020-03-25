@@ -8,7 +8,7 @@ SRC_URI += " \
 
 FILES_${PN} += " goshimmer.service"
 
-CONFFILES_${PN} = "${sysconfdir}/goshimmer/config.json"
+CONFFILES_${PN} = "${localstatedir}/lib/goshimmer/config.json"
 
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "goshimmer.service"
@@ -28,11 +28,11 @@ do_compile_prepend(){
 
 do_install_append(){
 
-    # create goshimmer directory in /etc
-    install -m 0755 -d ${D}${sysconfdir}/goshimmer
+    # create goshimmer directory in /var/lib
+    install -m 0755 -d ${D}${localstatedir}/lib/goshimmer
 
     # populate config.json
-    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/iotaledger/goshimmer/config.json ${D}${sysconfdir}/goshimmer
+    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/iotaledger/goshimmer/config.json ${D}${localstatedir}/lib/goshimmer
 
     # create systemd directory
     install -m 0755 -d ${D}${systemd_system_unitdir}
@@ -58,11 +58,7 @@ if type systemctl >/dev/null 2>/dev/null; then
 		useradd --no-create-home --system goshimmer > /dev/null
 	fi
 
-	# if /var/lib/goshimmer doesn't exist, create it
-	if [ ! -d /var/lib/goshimmer ]; then
-		mkdir -p /var/lib/goshimmer
-		chown -R goshimmer:goshimmer /var/lib/goshimmer
-	fi
+	chown -R goshimmer:goshimmer /var/lib/goshimmer
 
 	systemctl $OPTS disable goshimmer.service
 
