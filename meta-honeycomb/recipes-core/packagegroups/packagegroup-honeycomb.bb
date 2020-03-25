@@ -20,6 +20,7 @@ RDEPENDS_packagegroup-honeycomb-misc = " \
                                        cronie \
                                        man-db \
                                        htop \
+                                       gnupg \
 "
 
 RDEPENDS_packagegroup-honeycomb-networking = " \
