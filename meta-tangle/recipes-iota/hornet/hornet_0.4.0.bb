@@ -10,10 +10,10 @@ SRC_URI += " \
 "
 
 FILES_${PN} += " hornet.service"
-CONFFILES_${PN} += " ${sysconfdir}/hornet/config.json \
-                     ${sysconfdir}/hornet/neighbors.json \
-                     ${sysconfdir}/hornet/mqtt_config.json \
-                     ${sysconfdir}/hornet/config_comnet.json \
+CONFFILES_${PN} += " ${localstatedir}/lib/hornet/config.json \
+                     ${localstatedir}/lib/hornet/neighbors.json \
+                     ${localstatedir}/lib/hornet/mqtt_config.json \
+                     ${localstatedir}/lib/hornet/config_comnet.json \
                      ${sysconfdir}/default/hornet \
 "
 
@@ -26,24 +26,24 @@ export GOCACHE = "${B}/.cache"
 
 do_install_append(){
 
-    # create hornet directories in /etc
-    install -m 0755 -d ${D}${sysconfdir}/hornet
-    install -m 0755 -d ${D}${sysconfdir}/default
-
     # create systemd directory
     install -m 0755 -d ${D}${systemd_system_unitdir}
 
+    # create /var/lib/hornet
+    install -m 0755 -d ${D}${localstatedir}/lib/hornet
+
     # populate .json files
-    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config.json ${D}${sysconfdir}/hornet
-    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/neighbors.json ${D}${sysconfdir}/hornet
-    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/mqtt_config.json ${D}${sysconfdir}/hornet
-install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config_comnet.json ${D}${sysconfdir}/hornet
+    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config.json ${D}${localstatedir}/lib/hornet
+    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/neighbors.json ${D}${localstatedir}/lib/hornet
+    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/mqtt_config.json ${D}${localstatedir}/lib/hornet
+install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config_comnet.json ${D}${localstatedir}/lib/hornet
 
     # populate systemd service file
     install -m 0755 ${WORKDIR}/hornet.service ${D}${systemd_system_unitdir}
 
     # populate environment file (for .deb)
     if ["${PACKAGE_CLASSES}" == "package_deb"]; then
+        install -m 0755 -d ${D}${sysconfdir}/default
         install -m 0755 ${WORKDIR}/hornet.env ${D}${sysconfdir}/default/hornet
     fi
 }
@@ -65,11 +65,7 @@ if type systemctl >/dev/null 2>/dev/null; then
 		useradd --no-create-home --system hornet > /dev/null
 	fi
 
-	# if /var/lib/hornet doesn't exist, create it
-	if [ ! -d /var/lib/hornet ]; then
-		mkdir -p /var/lib/hornet
-		chown -R hornet:hornet /var/lib/hornet
-	fi
+	chown -R hornet:hornet /var/lib/hornet
 
 	systemctl $OPTS disable hornet.service
 
