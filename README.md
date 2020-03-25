@@ -22,7 +22,7 @@ The meta-iota layer is actually an umbrella layer that hosts:
  - meta-tangle: feature layer with recipes for IOTA related programs, tools and libraries for the IOTA Tangle Distributed Ledger.
  - meta-honeycomb: distro layer with configs and recipes for the IOTA honeycombOS Distribution.
 
-Any collaborations (issues, patches, pull requests, suggestions) are more than welcome: <bernardoaraujor@gmail.com>
+Any collaborations (issues, patches, pull requests, suggestions) are more than welcome: <bernardo.araujo@iota.org>
 
 ---
 ## Dependencies
@@ -49,22 +49,6 @@ The meta-honeycomb layer depends on:
 
 	URI: git://github.com/bernardoaraujor/meta-iota
 	layers: meta-tangle
-	branch: master
----
-## Tutorials
-
- - [IOTA cIRI on a BeagleBone Black with Yocto Project and OpenEmbedded](https://medium.com/@bernardoaraujor/iota-ciri-on-a-beaglebone-black-with-yocto-project-and-openembedded-6dd5b1379a60)
- - [OpenEmbedded, IOTA CClient and a Raspberry Pi](https://medium.com/@bernardoaraujor/openembedded-iota-cclient-and-a-raspberry-pi-5a614549e76)
- - [IOTA Masked Authenticated Messages on OpenSTLinux of STMicroelectronics Discovery Kit](https://medium.com/@bernardoaraujor/iota-masked-authenticated-messages-on-openstlinux-of-stmicroelectronics-discovery-kit-929d0fd45f7a)
- - [BitBaking honeycombOS](https://github.com/bernardoaraujor/meta-iota/wiki/BitBaking-honeycombOS)
-
----
-## Donations
-If you find meta-iota useful, please consider making a donation:
-
- - **IOTA**: `FQYGIJYKHZTLMTUMZKJKHKMWBCQTKDCGPWCRBYAAPLZRULNNAOFXQZCYQCAGUZNZLEAMTPIZQSYGGZRXAJKVCGLOJW`
- - **BTC**: `12PVr9rpVibFLpv2cDPLsror9pt2MC2Hzs`
- - **ETH**: `0x35cd665c0f6ef207935547ad480e5980131f81fc`
 
 ---
 ## License
