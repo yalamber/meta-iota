@@ -2,7 +2,7 @@ require ${PN}_${PV}.inc
 
 inherit systemd
 
-RDEPENDS_${PN} = " systemd bash"
+RDEPENDS_${PN} += " systemd"
 
 SRC_URI += " \
            file://hornet.service \
