@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Create 1GB swap file /var/swap
+# Activate it and add it to /etc/fstab
+
+# Create swap file
+echo "Creating /var/swap with dd."
+echo "This might take a while, be patient."
+dd if=/dev/urandom of=/var/swap bs=1024 count=1048576
+chmod 600 /var/swap
+
+# Enable swap file
+echo "Enabling /var/swap as swap file"
+mkswap /var/swap
+swapon /var/swap
+
+# Add to fstab
+echo "Adding /var/swap entry to /etc/fstab so it's persistent to reboot"
+echo "/var/swap   none    swap    sw    0   0" | tee /etc/fstab -a
