@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 WorkingDirectory=/var/lib/goshimmer
-User=beekeeper
+User=goshimmer
 SyslogIdentifier=GoShimmer
 LimitNOFILE=4096
 StandardOutput=syslog
@@ -17,7 +17,7 @@ ProtectHome=yes
 KillSignal=SIGTERM
 TimeoutSec=1200
 Restart=always
-ExecStart=/usr/bin/goshimmer -d /etc/goshimmer
+ExecStart=/usr/bin/goshimmer
 
 [Install]
 WantedBy=multi-user.target

@@ -9,5 +9,3 @@ SRC_URI = "git://github.com/iotaledger/goshimmer.git;protocol=https;name=goshimm
 inherit go pkgconfig
 GO_IMPORT = "github.com/iotaledger/goshimmer"
 GO_LINKSHARED = ""
-
-DEPENDS = "useradd-beekeeper"
