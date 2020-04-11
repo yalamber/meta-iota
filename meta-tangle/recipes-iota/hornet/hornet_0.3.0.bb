@@ -2,7 +2,7 @@ require ${PN}_${PV}.inc
 
 inherit systemd
 
-RDEPENDS_${PN} = " wget systemd bash"
+RDEPENDS_${PN} += " wget systemd"
 
 SRC_URI += " \
            file://hornet.service \
@@ -65,18 +65,15 @@ if type systemctl >/dev/null 2>/dev/null; then
 		systemctl daemon-reload
 	fi
 
-	# check if beekeeper exists
-	getent passwd beekeeper > /dev/null 2&>1
-
-	# if beekeeper doesn't exist, create it
-	if [ $? -eq 1 ]; then
-		useradd beekeeper
+	# if hornet user doesn't exist, create it
+	if [ ! $(getent passwd hornet) ]; then
+		useradd --no-create-home --system hornet > /dev/null
 	fi
 
 	# if /var/lib/hornet doesn't exist, create it
 	if [ ! -d /var/lib/hornet ]; then
-		mkdir /var/lib/hornet
-		chown beekeeper:beekeeper /var/lib/hornet
+		mkdir -p /var/lib/hornet
+		chown -R hornet:hornet /var/lib/hornet
 	fi
 
 	systemctl $OPTS disable hornet.service
@@ -102,7 +99,6 @@ remove)
     ;;
 purge)
     rm -rf /var/lib/hornet
-    rm /etc/default/hornet
     deluser hornet >/dev/null
     ;;
 upgrade | failed-upgrade | abort-install | abort-upgrade | disappear) ;;
@@ -113,3 +109,4 @@ upgrade | failed-upgrade | abort-install | abort-upgrade | disappear) ;;
     ;;
 esac
 }
+
