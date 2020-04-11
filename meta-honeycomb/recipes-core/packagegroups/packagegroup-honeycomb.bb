@@ -21,6 +21,7 @@ RDEPENDS_packagegroup-honeycomb-misc = " \
                                        man-db \
                                        htop \
                                        gnupg \
+                                       usbutils \
 "
 
 RDEPENDS_packagegroup-honeycomb-networking = " \
