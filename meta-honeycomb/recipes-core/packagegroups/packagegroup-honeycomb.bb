@@ -52,4 +52,5 @@ RDEPENDS_packagegroup-honeycomb-development += " \
 RDEPENDS_packagegroup-honeycomb-iota = " \
                                        hornet \
                                        goshimmer \
+                                       honeycomb-package-feeds \
 "
