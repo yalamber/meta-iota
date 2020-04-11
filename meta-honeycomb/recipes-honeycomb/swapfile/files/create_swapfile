@@ -41,7 +41,7 @@ if test -f "$SWAP_F"; then
 else
 	echo "Creating /var/swap with dd."
 	echo "This might take a while, be patient."
-	dd if=/dev/urandom of=$SWAP_F bs=1024 count="$SWAP_SIZE"
+	dd if=/dev/urandom of=$SWAP_F bs=1024 count="$SWAP_SIZE" status=none >/dev/null 2>&1
 	chmod 600 $SWAP_F
 fi
 
@@ -50,15 +50,15 @@ if [[ $(swapon -s | grep "$SWAP_F") ]]; then
 	echo "$SWAP_F is already enabled as swap."
 else
 	echo "Enabling $SWAP_F as swap file."
-	mkswap $SWAP_F
-	swapon $SWAP_F
+	mkswap $SWAP_F >/dev/null 2>&1
+	swapon $SWAP_F >/dev/null 2>&1
 fi
 
 # Add $SWAP_F to fstab if it doesn't already exist
 if [[ $(cat /etc/fstab | grep "$SWAP_F") ]]; then
 	echo "$SWAP_F entry already exists in /etc/fstab."
 else
-	echo "Adding $SWAP_F entry to /etc/fstab so it's persistent to reboot"
-	echo "$SWAP_F   none    swap    sw    0   0" | tee /etc/fstab -a
+	echo "Adding $SWAP_F entry to /etc/fstab so it's persistent to reboot."
+	echo "$SWAP_F   none    swap    sw    0   0" >> /etc/fstab
 fi
 
