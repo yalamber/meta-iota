@@ -23,3 +23,9 @@ do_install () {
 }
 
 FILES_${PN} = "${bindir}"
+
+pkg_postinst_ontarget_${PN}() {
+	expand_rootfs
+	rm -f /usr/bin/expand_rootfs
+	reboot
+}
