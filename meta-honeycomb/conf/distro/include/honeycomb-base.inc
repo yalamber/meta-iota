@@ -11,6 +11,8 @@ GOVERSION = "1.13%"
 DISTRO_FEATURES += " \
                    systemd \
                    wifi \
+                   pam \
+                   polkit \
 "
 
 VIRTUAL-RUNTIME_init_manager = "systemd"
