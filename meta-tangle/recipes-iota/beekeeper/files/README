@@ -1,23 +1,21 @@
-It is highly recommended that you change the password for both beekeeper and root users! You can do that with the following commands:
+root's original password is "tangleisawesome", and beekeeper's is "pollen2honey" (both without quotation marks).
 
-$ passwd
+Preshared passwords are extremely unsafe. honeycombOS mitigates that with the following:
 
-That's assuming you're logged in as beekeeper. To change for root:
+- You are forced to change the password for beekeeper as soon as you log in.
+- You are not be able to SSH in as root.
+
+After you change the password for beekeeper, make sure you also change for root:
 
 $ sudo su
 # passwd
 
-Root's original password is "tangleisawesome", and beekeeper's is "pollen2honey" (both without quotation marks).
-
-------------------------------------------------------------------------------
-
-It is also recommended that you expand the rootfs so it fills the whole SD card.
-Do it by running:
-$ sudo expand_rootfs
-
-Then reboot the board and and give the resizefs-once script a few minutes to finish expanding the file system.
-
-You can then check the new the file system with 'df -h' once it has run and you should see a size close to the known size of your card.
+As guidelines for password creation:
+- Don't use the same password for beekeeper and root.
+- Make sure the passwords have 12 characters or more, including:
+   - lower and upper case letters
+   - numbers
+   - special characters
 
 ------------------------------------------------------------------------------
 
