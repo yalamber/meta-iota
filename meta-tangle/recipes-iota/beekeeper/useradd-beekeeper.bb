@@ -19,6 +19,7 @@ USERADD_PACKAGES = "${PN}"
 USERADD_PARAM_${PN} = "-u 1008 -d /home/beekeeper -r -s /bin/bash -P 'pollen2honey' -g iota beekeeper"
 
 GROUPADD_PARAM_${PN} = "-g 1008 iota"
+GROUPADD_PARAP_${PN} = "-g 986 wheel"
 
 do_install () {
 	install -d -m 755 ${D}${datadir}/beekeeper
@@ -39,6 +40,12 @@ FILES_${PN} = "${exec_prefix}/* /home/*"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
 pkg_postinst_ontarget_${PN}(){
+
+    # add beekeeper to sudo group
+    usermod -aG sudo beekeeper
+    usermod -aG wheel beekeeper
+
+    # set password expiry to 0
     chage -d 0 root
     chage -d 0 beekeeper
 }
