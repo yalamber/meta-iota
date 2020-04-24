@@ -4,6 +4,7 @@ inherit systemd
 
 SRC_URI += " \
              file://goshimmer.service \
+             file://goshimmer_clean_db \
 "
 
 FILES_${PN} += " goshimmer.service"
@@ -39,6 +40,9 @@ do_install_append(){
 
     # populate systemd service file
     install -m 0755 ${WORKDIR}/goshimmer.service ${D}${systemd_system_unitdir}
+
+    # install goshimmer_clean_db
+    install -m 0755 ${WORKDIR}/goshimmer_clean_db ${D}${bindir}
 }
 
 pkg_postinst_ontarget_${PN}(){
