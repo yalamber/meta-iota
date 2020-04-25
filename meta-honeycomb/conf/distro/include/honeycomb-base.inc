@@ -16,6 +16,7 @@ DISTRO_FEATURES += " \
 "
 
 VIRTUAL-RUNTIME_init_manager = "systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 
 PACKAGE_CLASSES = "package_deb"
 
