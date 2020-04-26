@@ -8,6 +8,7 @@ PACKAGES = " \
              packagegroup-honeycomb-networking \
              packagegroup-honeycomb-development \
              packagegroup-honeycomb-iota \
+             packagegroup-honeycomb-cockpit \
 "
 
 RDEPENDS_packagegroup-honeycomb-misc = " \
@@ -54,4 +55,14 @@ RDEPENDS_packagegroup-honeycomb-iota = " \
                                        hornet \
                                        goshimmer \
                                        honeycomb-package-feeds \
+"
+
+RDEPENDS_packagegroup-honeycomb-cockpit = " \
+                                            cockpit \
+                                            cockpit-ws \
+                                            cockpit-system \
+                                            cockpit-dashboard \
+                                            cockpit-bridge \
+                                            cockpit-pcp \
+                                            honeycomb-cockpit-plugins \
 "

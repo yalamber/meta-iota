@@ -16,4 +16,5 @@ IMAGE_INSTALL_append += "\
                           packagegroup-honeycomb-networking \
                           packagegroup-honeycomb-development \
                           packagegroup-honeycomb-iota \
+                          packagegroup-honeycomb-cockpit \
 "
