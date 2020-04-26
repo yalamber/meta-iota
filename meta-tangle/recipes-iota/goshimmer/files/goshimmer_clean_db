@@ -9,6 +9,10 @@ import shutil
 import sys
 import errno
 
+if os.geteuid() != 0:
+    print("You need root permissions to do this!")
+    sys.exit(1)
+
 status = os.system('systemctl is-active --quiet goshimmer') # will return 0 for active else inactive.
 if not status:
     try:
@@ -26,10 +30,13 @@ if not exists:
 else:
     try:
         shutil.rmtree(mainnetdb_path)
-        print("GoShimmer mainnetdb has been cleaned. You can restart the service now.")
+        print("GoShimmer mainnetdb has been cleaned.")
     except IOError as e:
         errorn, strerror = e.args
         if errorn == errno.EACCES:
             print("You need root permissions to do this!")
             sys.exit(1)
 
+if not status: # service was running, restart it
+    print("Starting goshimmer.service.")
+    os.system('systemctl start goshimmer')
