@@ -11,11 +11,7 @@ FILES_${PN} += " \
 "
 
 do_install_append() {
-
-    if ["${MACHINE}" != "qemuarm64" -a "${MACHINE}" != "qemuarm" -a "${MACHINE}" != "qemux86-64" -a "${MACHINE}" != "qemux86"]; then
-        install -d ${D}${sysconfdir}/systemd/network
-        install -m 0644 ${WORKDIR}/eth.network ${D}${sysconfdir}/systemd/network
-        install -m 0644 ${WORKDIR}/wlan.network ${D}${sysconfdir}/systemd/network
-    fi
-
+    install -d ${D}${sysconfdir}/systemd/network
+    install -m 0644 ${WORKDIR}/eth.network ${D}${sysconfdir}/systemd/network
+    install -m 0644 ${WORKDIR}/wlan.network ${D}${sysconfdir}/systemd/network
 }
