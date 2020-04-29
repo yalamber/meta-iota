@@ -53,7 +53,9 @@ RDEPENDS_packagegroup-honeycomb-development += " \
 
 RDEPENDS_packagegroup-honeycomb-iota = " \
                                        hornet \
+                                       hornetctl \
                                        goshimmer \
+                                       goshimmerctl \
                                        honeycomb-package-feeds \
 "
 
