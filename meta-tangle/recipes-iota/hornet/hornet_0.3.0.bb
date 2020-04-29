@@ -52,10 +52,6 @@ do_install_append(){
         install -m 0755 ${WORKDIR}/hornet.env ${D}${sysconfdir}/default/hornet
     fi
 
-    # install hornet helper scripts
-    install -m 0755 ${WORKDIR}/hornet_clean_db ${D}${bindir}
-    install -m 0755 ${WORKDIR}/hornet_dashboard_enable ${D}${bindir}
-    install -m 0755 ${WORKDIR}/hornet_dashboard_disable ${D}${bindir}
 }
 
 pkg_postinst_ontarget_${PN}(){
