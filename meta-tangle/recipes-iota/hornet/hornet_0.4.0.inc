@@ -3,7 +3,7 @@ require hornet-common.inc
 # Go dependencies
 SRC_URI += "\
            git://github.com/OneOfOne/xxhash.git;protocol=https;name=xxhash;destsuffix=${PN}-${PV}/src/github.com/OneOfOne/xxhash \
-           git://github.com/dgraph-io/badger.git;protocol=https;name=badger;destsuffix=${PN}-${PV}/src/github.com/dgraph-io/badger/v2 \
+           git://github.com/dgraph-io/badger.git;protocol=https;name=badger;destsuffix=${PN}-${PV}/src/github.com/dgraph-io/badger/v2;nobranch=1 \
            git://github.com/eclipse/paho.mqtt.golang.git;protocol=https;name=paho.mqtt;destsuffix=${PN}-${PV}/src/github.com/eclipse/paho.mqtt.golang \
            git://github.com/fhmq/hmq.git;protocol=https;name=hmq;destsuffix=${PN}-${PV}/src/github.com/fhmq/hmq \
            git://github.com/gin-contrib/gzip.git;protocol=https;name=gzip;destsuffix=${PN}-${PV}/src/github.com/gin-contrib/gzip \
@@ -31,7 +31,6 @@ SRC_URI += "\
            git://github.com/gobuffalo/logger.git;protocol=https;name=logger;destsuffix=${PN}-${PV}/src/github.com/gobuffalo/logger \
            git://github.com/gobuffalo/packd.git;protocol=https;name=packd;destsuffix=${PN}-${PV}/src/github.com/gobuffalo/packd \
            git://github.com/joho/godotenv.git;protocol=https;name=godotenv;destsuffix=${PN}-${PV}/src/github.com/joho/godotenv \
-           git://github.com/mattn/go-colorable.git;protocol=https;name=go-colorable;destsuffix=${PN}-${PV}/src/github.com/mattn/go-colorable \
            git://github.com/mattn/go-isatty.git;protocol=https;name=go-isatty;destsuffix=${PN}-${PV}/src/github.com/mattn/go-isatty \
            git://github.com/rogpeppe/go-internal.git;protocol=https;name=go-internal;destsuffix=${PN}-${PV}/src/github.com/rogpeppe/go-internal \
            git://github.com/sirupsen/logrus.git;protocol=https;name=logrus;destsuffix=${PN}-${PV}/src/github.com/sirupsen/logrus \
@@ -46,7 +45,6 @@ SRC_URI += "\
            git://github.com/subosito/gotenv.git;protocol=https;name=gotenv;destsuffix=${PN}-${PV}/src/github.com/subosito/gotenv \
            git://github.com/json-iterator/go.git;protocol=https;name=json-iterator;destsuffix=${PN}-${PV}/src/github.com/json-iterator/go \
            git://github.com/ugorji/go.git;protocol=https;name=go-codec;destsuffix=${PN}-${PV}/src/github.com/ugorji/go \
-           git://github.com/valyala/bytebufferpool.git;protocol=https;name=bytebufferpool;destsuffix=${PN}-${PV}/src/github.com/valyala/bytebufferpool \
            git://github.com/golang/xerrors.git;protocol=https;name=xerrors;destsuffix=${PN}-${PV}/src/golang.org/x/xerrors \
            git://github.com/go-playground/validator.git;protocol=https;name=validator;destsuffix=${PN}-${PV}/src/gopkg.in/go-playground/validator.v9 \
            git://github.com/go-playground/universal-translator.git;protocol=https;name=universal-translator;destsuffix=${PN}-${PV}/src/github.com/go-playground/universal-translator \
@@ -84,7 +82,7 @@ SRC_URI += "\
            git://github.com/jcmturner/rpc.git;protocol=https;name=rpc;destsuffix=${PN}-${PV}/src/gopkg.in/jcmturner/rpc.v1 \
 "
 
-SRCREV_hornet = "v${PV}"
+SRCREV_hornet = "v${PV}-rc8"
 
 # hornet deps
 SRCREV_xxhash = "v1.2.7"
@@ -104,7 +102,7 @@ SRCREV_iota.go = "dfb0acdec2406a6beb5816fb5d96cbd328f2151e"
 SRCREV_echo = "v4.1.15"
 SRCREV_mapstructure = "v1.2.2"
 SRCREV_errors = "v0.9.1"
-SRCREV_libcalico-go = "v3.9.0"
+SRCREV_libcalico-go = "v3.9.0-0.dev"
 SRCREV_gopsutil = "v2.20.2"
 SRCREV_pflag = "v1.0.5"
 SRCREV_net = "1c781a10960ae16c34a899a47d78ad79ab36fd61"
