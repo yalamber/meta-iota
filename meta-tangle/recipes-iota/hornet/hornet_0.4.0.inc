@@ -2,7 +2,7 @@ require hornet-common.inc
 
 # Go dependencies
 SRC_URI += "\
-           git://github.com/OneOfOne/xxhash.git;protocol=https;name=xxhash;destsuffix=${PN}-${PV}/src/github.com/OneOfOne/xxhash \
+           git://github.com/cespare/xxhash.git;protocol=https;name=xxhash;destsuffix=${PN}-${PV}/src/github.com/cespare/xxhash \
            git://github.com/dgraph-io/badger.git;protocol=https;name=badger;destsuffix=${PN}-${PV}/src/github.com/dgraph-io/badger/v2;nobranch=1 \
            git://github.com/eclipse/paho.mqtt.golang.git;protocol=https;name=paho.mqtt;destsuffix=${PN}-${PV}/src/github.com/eclipse/paho.mqtt.golang \
            git://github.com/fhmq/hmq.git;protocol=https;name=hmq;destsuffix=${PN}-${PV}/src/github.com/fhmq/hmq \
@@ -80,12 +80,26 @@ SRC_URI += "\
            git://github.com/jcmturner/aescts.git;protocol=https;name=aescts;destsuffix=${PN}-${PV}/src/gopkg.in/jcmturner/aescts.v1 \
            git://github.com/jcmturner/dnsutils.git;protocol=https;name=dnsutils;destsuffix=${PN}-${PV}/src/gopkg.in/jcmturner/dnsutils.v1 \
            git://github.com/jcmturner/rpc.git;protocol=https;name=rpc;destsuffix=${PN}-${PV}/src/gopkg.in/jcmturner/rpc.v1 \
+           git://github.com/DataDog/zstd.git;protocol=https;name=zstd;destsuffix=${PN}-${PV}/src/github.com/DataDog/zstd;nobranch=1 \
+           git://github.com/dgraph-io/ristretto.git;protocol=https;name=ristretto;destsuffix=${PN}-${PV}/src/github.com/dgraph-io/ristretto;nobranch=1 \
+           git://github.com/dgryski/go-farm.git;protocol=https;name=go-farm;destsuffix=${PN}-${PV}/src/github.com/dgryski/go-farm;nobranch=1 \
+           git://github.com/karrick/godirwalk.git;protocol=https;name=godirwalk;destsuffix=${PN}-${PV}/src/github.com/karrick/godirwalk;nobranch=1 \
+           git://github.com/labstack/gommon.git;protocol=https;name=gommon;destsuffix=${PN}-${PV}/src/github.com/labstack/gommon;nobranch=1 \
+           git://github.com/markbates/errx.git;protocol=https;name=errx;destsuffix=${PN}-${PV}/src/github.com/markbates/errx;nobranch=1 \
+           git://github.com/markbates/oncer.git;protocol=https;name=oncer;destsuffix=${PN}-${PV}/src/github.com/markbates/oncer;nobranch=1 \
+           git://github.com/markbates/safe.git;protocol=https;name=safe;destsuffix=${PN}-${PV}/src/github.com/markbates/safe;nobranch=1 \
+           git://github.com/mattn/go-colorable.git;protocol=https;name=go-colorable;destsuffix=${PN}-${PV}/src/github.com/mattn/go-colorable;nobranch=1 \
+           git://github.com/mr-tron/base58.git;protocol=https;name=base58;destsuffix=${PN}-${PV}/src/github.com/mr-tron/base58;nobranch=1 \
+           git://github.com/oasislabs/ed25519.git;protocol=https;name=ed25519;destsuffix=${PN}-${PV}/src/github.com/oasislabs/ed25519;nobranch=1 \
+           git://github.com/valyala/fasttemplate.git;protocol=https;name=fasttemplate;destsuffix=${PN}-${PV}/src/github.com/valyala/fasttemplate;nobranch=1 \
+           git://github.com/uber-go/atomic.git;protocol=https;name=atomic;destsuffix=${PN}-${PV}/src/go.uber.org/atomic;nobranch=1 \
+           git://github.com/golang/sys.git;protocol=https;name=sys;destsuffix=${PN}-${PV}/src/golang.org/x/sys;nobranch=1 \
 "
 
 SRCREV_hornet = "v${PV}-rc8"
 
 # hornet deps
-SRCREV_xxhash = "v1.2.7"
+SRCREV_xxhash = "v1.1.0"
 SRCREV_badger = "v2.0.1"
 SRCREV_paho.mqtt = "0d940dd29fd24f905cd16b28b1209b4977b97e1a"
 SRCREV_hmq = "55f1f1aa8001b422e4e648cf8240a2bdf0dbfd52"
@@ -97,7 +111,7 @@ SRCREV_go-github = "v17.0.0"
 SRCREV_go-querystring = "v1.0.0"
 SRCREV_go-version = "v1.2.0"
 SRCREV_websocket = "v1.4.2"
-SRCREV_hive.go = "c2211af63dcd9bdf3a99f5c2e0f7dad4f68f39d4"
+SRCREV_hive.go = "8da1ccad46059b75cbaf11685d3b30c6a51b5a4d"
 SRCREV_iota.go = "dfb0acdec2406a6beb5816fb5d96cbd328f2151e"
 SRCREV_echo = "v4.1.15"
 SRCREV_mapstructure = "v1.2.2"
@@ -108,15 +122,20 @@ SRCREV_pflag = "v1.0.5"
 SRCREV_net = "1c781a10960ae16c34a899a47d78ad79ab36fd61"
 SRCREV_go-latest = "e3007ae9052ed85144087e7392e4c3fbc07962fa"
 SRCREV_go-metro = "280f6062b5bc97ee9b9afe7f2ccb361e59845baa"
+SRCREV_atomic = "v1.5.1"
 
 # echo deps
 SRCREV_jwt-go = "v3.2.0"
 SRCREV_crypto = "38d8ce5564a5b71b2e3a00553993f1b9a7ae852f"
+SRCREV_gommon = "v0.3.0"
 
 # badger deps
 SRCREV_go-humanize = "v1.0.0"
 SRCREV_protobuf = "v1.3.1"
 SRCREV_snappy = "v0.0.1"
+SRCREV_zstd = "v1.4.1"
+SRCREV_ristretto = "c1f00be0418e1e647efe10e5f1c3930db33fec98"
+SRCREV_go-farm = "6a90982ecee230ff6cba02d5bd386acc030be9d3"
 
 # gin deps
 SRCREV_sse = "v0.1.0"
@@ -129,6 +148,10 @@ SRCREV_validator = "v9.29.1"
 SRCREV_envy = "v1.7.0"
 SRCREV_logger = "v1.0.0"
 SRCREV_packd = "v0.3.0"
+SRCREV_godirwalk = "v1.10.12"
+SRCREV_errx = "v1.1.0"
+SRCREV_oncer = "v1.0.0"
+SRCREV_safe = "v1.0.1"
 
 # envy deps
 SRCREV_godotenv = "v1.3.0"
@@ -140,6 +163,8 @@ SRCREV_logrus = "v1.4.2"
 # hive.go deps
 SRCREV_viper = "v1.6.2"
 SRCREV_zap = "v1.13.0"
+SRCREV_base58 = "v1.1.3"
+SRCREV_ed25519 = "29f6767a7c3efd210de1289dd6260a46b7e9d63d"
 
 # viper deps
 SRCREV_fsnotify = "v1.4.9"
@@ -197,3 +222,10 @@ SRCREV_go-uuid = "v1.0.1"
 SRCREV_aescts = "v1.0.1"
 SRCREV_dnsutils = "v1.0.1"
 SRCREV_rpc = "v1.1.0"
+
+# gommon deps
+SRCREV_go-colorable = "v0.1.2"
+SRCREV_fasttemplate = "v1.0.1"
+
+# fsnotify deps
+SRCREV_sys = "aed5e4c7ecf9f069775e08834fb724544628d38d"

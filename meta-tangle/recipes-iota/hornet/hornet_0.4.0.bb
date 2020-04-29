@@ -11,9 +11,10 @@ SRC_URI += " \
 
 FILES_${PN} += " hornet.service"
 CONFFILES_${PN} += " ${localstatedir}/lib/hornet/config.json \
-                     ${localstatedir}/lib/hornet/neighbors.json \
+                     ${localstatedir}/lib/hornet/peering.json \
                      ${localstatedir}/lib/hornet/mqtt_config.json \
                      ${localstatedir}/lib/hornet/config_comnet.json \
+                     ${localstatedir}/lib/hornet/profiles.json \
                      ${sysconfdir}/default/hornet \
 "
 
@@ -34,9 +35,11 @@ do_install_append(){
 
     # populate .json files
     install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config.json ${D}${localstatedir}/lib/hornet
-    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/neighbors.json ${D}${localstatedir}/lib/hornet
     install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/mqtt_config.json ${D}${localstatedir}/lib/hornet
-install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config_comnet.json ${D}${localstatedir}/lib/hornet
+    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/config_comnet.json ${D}${localstatedir}/lib/hornet
+    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/peering.json ${D}${localstatedir}/lib/hornet
+    install -m 0644 ${WORKDIR}/${PN}-${PV}/src/github.com/gohornet/hornet/profiles.json ${D}${localstatedir}/lib/hornet
+
 
     # populate systemd service file
     install -m 0755 ${WORKDIR}/hornet.service ${D}${systemd_system_unitdir}
