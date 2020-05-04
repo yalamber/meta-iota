@@ -32,6 +32,8 @@ RDEPENDS_packagegroup-honeycomb-networking = " \
                                              wget \
                                              curl \
                                              ca-certificates \
+                                             nginx \
+                                             acme \
 "
 
 RDEPENDS_packagegroup-honeycomb-development += " \

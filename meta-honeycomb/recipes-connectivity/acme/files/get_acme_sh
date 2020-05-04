@@ -1,0 +1,3 @@
+#!/bin/bash
+curl https://get.acme.sh | sh
+source ${HOME}/.profile
