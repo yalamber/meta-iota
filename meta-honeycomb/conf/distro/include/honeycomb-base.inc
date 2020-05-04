@@ -1,12 +1,12 @@
 require conf/distro/poky.conf
 
 DISTRO = "honeycomb"
-DISTRO_NAME = "IOTA honeycombOS"
-DISTRO_VERSION = "0.2.1"
+DISTRO_NAME = "IOTA HONEYCOMB OS"
+DISTRO_VERSION = "0.3.0"
 
-MAINTAINER = "Bernardo A. Rodrigues <bernardoaraujor@gmail.com>"
+MAINTAINER = "Bernardo A. Rodrigues <bernardo.araujo@iota.org>"
 
-GOVERSION = "1.13%"
+GOVERSION = "1.14%"
 
 DISTRO_FEATURES += " \
                    systemd \
