@@ -44,7 +44,7 @@ The meta-honeycomb layer depends on:
 	branch: warrior, thud, zeus
 
 	URI: git://git.openembedded.org/meta-openembedded
-	layers: meta-oe, meta-python, meta-networking
+	layers: meta-oe, meta-python, meta-networking, meta-webserver
 	branch: warrior, thud, zeus
 
 	URI: git://github.com/bernardoaraujor/meta-iota
